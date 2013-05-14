@@ -15,7 +15,8 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 	frame: false,
 	vis: undefined,
 	visualStyle: undefined,
-	selectionModel: [],
+	nodesSelectionModel: [],
+	edgesSelectionModel: [],
 
 	initComponent: function () {
 		this.callParent(arguments);
@@ -71,28 +72,37 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 // PROCEDURE FOR JOINING TWO NODES /////////////
 // select event for nodes. if two nodes selected, one after another, an arrow is displayed
 			me.vis.addListener('select', 'nodes', function(ev) {
-				me.selectionModel.push(ev.target[0]);
-				// console.log('select: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
+				me.nodesSelectionModel.push(ev.target[0]);
+				// console.log('select: event target: '+ev.target[0].data.id+'; nodesSelectionModel.length: '+me.nodesSelectionModel.length);
 
 				// THIS IS TO ADD AN EDGE JOINING THE NODES STRAIGHT AWAY
-				if (me.selectionModel.length == 2) {
+				if (me.nodesSelectionModel.length == 2) {
 					// console.log('Adding edge and removing selected nodes');
-					var added = APP.lib.CytoscapeActions.createEdge(me.vis, me.selectionModel);
-					if (added !== undefined) {
-						var node1Id = me.selectionModel[0].data.id,
-								node2Id = me.selectionModel[1].data.id;
-						me.selectionModel.length = 0;
+					var added = APP.lib.CytoscapeActions.createEdge(me.vis, me.nodesSelectionModel);
+					if (added !== false) { // the edge was created
+						var node1Id = me.nodesSelectionModel[0].data.id,
+								node2Id = me.nodesSelectionModel[1].data.id;
+						me.nodesSelectionModel.length = 0;
 
 						me.vis.deselect("nodes", [node1Id, node2Id]);
 					}
 				}
 
-			}); // EO addListener select!!
+			}); // EO addListener select nodes!!
+
+
+			me.vis.addListener('select', 'edges', function (ev) {
+				me.edgesSelectionModel.push(ev.target[0]);
+			});
 
 			me.vis.addListener("deselect", 'nodes', function (ev) {
-				me.selectionModel.length = 0;
-				// console.log('deselect: event target: '+ev.target[0].data.id+'; selectionModel.length: '+me.selectionModel.length);
+				me.nodesSelectionModel.length = 0;
+				// console.log('deselect: event target: '+ev.target[0].data.id+'; nodesSelectionModel.length: '+me.nodesSelectionModel.length);
 			});
+
+			me.vis.addListener('deselect', 'edges', function (ev) {
+				me.edgesSelectionModel.length = 0;
+			})
 // EO PROCEDURE FOR JOINING TWO NODES /////////////
 
 			/* a mousout should be programmed to hide the tip...

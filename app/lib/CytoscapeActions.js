@@ -72,7 +72,7 @@ Ext.define('APP.lib.CytoscapeActions', {
 		 * Creates a new (directed) edge between the nodes
 		 * @param {org.cytoscapeweb.Visualization} vis the cytoscape Visualization instance
 		 * @param {Array} nodes the (two) nodes to connect by the edge. These are the straight
-		 * target objects as delivered by the Event object and stored in the selectionModel
+		 * target objects as delivered by the Event object and stored in the nodesSelectionModel
 		 */
 		createEdge: function (vis, nodes) {
 			var edges = vis.edges().length;
@@ -152,6 +152,24 @@ Ext.define('APP.lib.CytoscapeActions', {
 
 			var runner = Ext.create('APP.lib.HypothesisRunner', edges, nodes);
 			var paths = runner.graphWalker();
+			vis.visualStyleBypass(null);
+
+			var bypassEdge = function (edge) {
+				// var cytovis = vis;
+				var bypass = {
+					nodes: {},
+					edges: {
+					}
+				};
+
+				bypass.edges[edge.id] = {
+					color: 'green'
+				};
+
+				vis.visualStyleBypass(bypass);
+				console.info('suppossedly only callback funcion for every rule...');
+			}
+
 
 			// There are several paths in a graph, with several edges for every path
 			// and one rule for every edges, with several function every rule
@@ -163,6 +181,8 @@ Ext.define('APP.lib.CytoscapeActions', {
 					Ext.each(aliases, function(aliasObj, indexFunc, functionsList) {
 						var opObj = APP.lib.RuleFunctions.getOperationFromAlias(aliasObj.alias);
 						opObj.on('operationComplete', function (result) {
+							bypassEdge(edge);
+
 							console.log('operationComplete:'+aliasObj.result+ ' vs '+result);
 							var labelResult = Ext.getCmp('labelResult');
 							if (labelResult == null)
