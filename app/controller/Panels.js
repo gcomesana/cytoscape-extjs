@@ -79,7 +79,8 @@ Ext.define('APP.controller.Panels', {
 			id: newId.toString(),
 			label: evOpts.value,
 			// entity: APP.lib.CytoscapeActions.shape2entity[shape], // this is a Number
-			entity: entityWidget.shape2entity[shape],
+			// entity: entityWidget.shape2entity[shape],
+			entity: evOpts.meta,
 			payloadValue: evOpts.value
 		};
 
@@ -102,14 +103,18 @@ Ext.define('APP.controller.Panels', {
 			nodes = nm.data.nodes;
 		}
 		else if (btnId == 'btnEnactSel') { // only for selected nodes (a subgraph)
-			var selModel;
-			selModel = Ext.Array.map(cytoscape.selectionModel, function (item) {
+			var selNodeModel, selEdgeModel;
+			selNodeModel = Ext.Array.map(cytoscape.nodesSelectionModel, function (item) {
 				return item.data;
 			});
 
+			selEdgeModel = Ext.Array.map(cytoscape.edgesSelectionModel, function (edge) {
+				return edge.data;
+			});
+
 			var nm = vis.networkModel();
-			nodes = selModel;
-			edges = nm.data.edges;
+			nodes = selNodeModel;
+			edges = selEdgeModel; // nm.data.edges;
 		}
 		// functionEvent = APP.lib.RuleFunctions.getFunctionFromAlias(alias)
 		// functionEvent.addListener('operationComplete', this.onOperationComplete, this)
