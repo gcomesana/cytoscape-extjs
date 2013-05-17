@@ -198,9 +198,11 @@ Ext.define('APP.lib.CytoscapeActions', {
           */
 				})
 			});
-
+			if (vis.selected().length > 0)
+				vis.deselect();
+			
 //			runner.pathsToString();
-		},
+		}, // EO rungraph
 
 
 		/**

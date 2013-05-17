@@ -72,8 +72,15 @@ Ext.define('APP.controller.Panels', {
 		var entityWidget = comp.up();
 		var shape = entityWidget.getShape().type;
 
-
 		var newId = vis.nodes().length+1;
+		var i = 1;
+		var existsNode = vis.node(newId);
+		while (existsNode != null) {
+			i++;
+			newId = vis.nodes().length+i;
+			existsNode = vis.node(newId);
+		}
+
 		// OUR NODE definition!!!
 		var nodeOpts = {
 			id: newId.toString(),
@@ -111,10 +118,8 @@ Ext.define('APP.controller.Panels', {
 					}
 					nodeOpts.payloadValue = payload;
 					APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
-
 				}
 			})
-
 		}
 		else
 			APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
