@@ -15,9 +15,6 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 		// threshold: undefined,
 		alias: 'target-target-interactions',
 
-
-
-
 		/**
 		 * Template function Object to get along a rule
 		 * Gets interactions among the two values
@@ -72,10 +69,8 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 
 
-	var interactionOp = Ext.create('APP.lib.RuleOperation', {});
-	var operationStore = [interactionOp];
-
-
+	var interactionOp = Ext.create('APP.lib.InteractionsRuleOperation', {});
+	var operationStore = [interactionOp]; // Actual logic for rule operations come from here!!!!
 
 	var notImplementedYet = function (valSrc, valTrg, threshold, funcObj) {
 		console.error('Not implemented yet...');
@@ -86,36 +81,40 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 	return {
 
-		requires: ['APP.lib.Util', 'APP.lib.RuleOperation'],
+		requires: ['APP.lib.Util', 'APP.lib.RuleOperation', 'APP.lib.InteractionsRuleOperation'],
 
 		constructor: function () {
+			console.log("RuleFunctions constructor!!!");
 			this.callParent(arguments);
 
-			var op = Ext.create('APP.lib.RuleOperation', {});
+			// var op = Ext.create('APP.lib.RuleOperation', {});
+			var op = Ext.create('APP.lib.InteractionsRuleOperation', {});
+			console.log('op.alias: '+op.alias);
 			operationStore.push(op);
 		},
 
 		statics: {
 			getFunctionsRule: function (entitySrc, entityTarget) {
 				var funcArray = [];
+				var clonedFunc;
 
 				switch (entitySrc) {
 					case APP.lib.CytoscapeActions.PROTEIN:
 						switch (entityTarget) {
 							case APP.lib.CytoscapeActions.PROTEIN:
-								var clonedFunc = APP.lib.Util.clone(interactionFunc);
+								clonedFunc = APP.lib.Util.clone(interactionFunc);
 								funcArray.push(clonedFunc);
 								break;
 
 							default:
-								var clonedFunc = APP.lib.Util.clone(interactionFunc);
+								clonedFunc = APP.lib.Util.clone(interactionFunc);
 								funcArray.push(clonedFunc);
 								break;
 						}
 						break;
 
 					default:
-						var clonedFunc = APP.lib.Util.clone(interactionFunc);
+						clonedFunc = APP.lib.Util.clone(interactionFunc);
 						funcArray.push(clonedFunc);
 						break;
 				}
@@ -164,7 +163,9 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 
 			/**
-			 * It gets the operation from the alias.
+			 * It gets the operation from the alias. In the edge, no function are held,
+			 * just the alias to get the operation represented by the alias from here when
+			 * running the graph
 			 * @param {String} alias the alias of the operation
 			 * @return {APP.lib.RuleOperation} the operation object
 			 */

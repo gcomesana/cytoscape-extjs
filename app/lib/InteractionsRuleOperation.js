@@ -13,27 +13,29 @@
  * /////
  * rfe.fireEvent('operationComplete');
  */
-Ext.define('APP.lib.RuleOperation', {
-	// extend: 'Ext.util.Observable',
+Ext.define('APP.lib.InteractionsRuleOperation', {
+	extend: 'APP.lib.RuleOperation',
 	mixins: {
 		observable: 'Ext.util.Observable'
 	},
 
 	constructor: function (config) {
 		// this.initConfig(config);
-
-		this.evName = 'operationComplete';
-		this.alias = 'operation-alias';
-		this.result = null;
-		this.threshold = null;
-
-		this.mixins.observable.constructor.call(this, config);
-		this.addEvents({
-			'operationCompleted': true
-		});
-
-		this.listeners = config.listeners;
 		this.callParent(arguments);
+		this.alias = 'target-target-interactions';
+		/*
+		 this.evName = 'operationComplete';
+		 this.result = null;
+		 this.threshold = null;
+
+		 this.mixins.observable.constructor.call(this, config);
+		 this.addEvents({
+		 'operationCompleted': true
+		 }),
+
+		 this.listeners = config.listeners;
+		 this.callParent(arguments);
+		 */
 
 	},
 
@@ -57,17 +59,17 @@ Ext.define('APP.lib.RuleOperation', {
 				threshold: (threshold === undefined || threshold == null)? 0.0: threshold
 			},
 
-//			callback: function (opts, resp) {
-//			},
+			callback: function (opts, resp) {
+				console.log('ajax callback');
+			},
 
 			failure: function (resp, opts) {
 				funcObj.result = -1;
 			},
 
 			success: function (resp, opts) {
-				me.resumeEvents();
 				var jsonObj = resp;
-				var result = jsonObj.totalCount;
+				var result;
 				var sumConfVal = 0;
 				if (jsonObj.totalCount > 0) {
 					Ext.each(jsonObj.interactions, function (inter, index, interactions) {
@@ -76,14 +78,17 @@ Ext.define('APP.lib.RuleOperation', {
 					result = sumConfVal / jsonObj.totalCount;
 				}
 
-				funcObj.result = result;
-				console.log('Operation finished!!!: '+funcObj.result);
-				me.fireEvent('operationComplete', {result: result, edge: edge});
-				me.suspendEvents();
+				funcObj.result = result === undefined? -1: result;
+				var hypothesiseResult = result !== undefined;
+
+				var edgeId = 'e'+edgeSrc.id+'-'+edgeTrg.id;
+				console.log('Operation finished!!!: '+funcObj.result+' for '+edgeId);
+
+				me.fireEvent('operationComplete', {result: funcObj.result, hypothesis: hypothesiseResult, edgeId: edgeId});
 			},
 
 			scope: me
-		})
+		})// EO JsonP request
 	}
 
 });

@@ -41,7 +41,7 @@ Ext.define('APP.controller.Panels', {
 			/*'cytopanel > container > entity-lookup > textbox-btn > button': {  // much better than above
 				click: this.onClickButton
 			},*/
-			'cytopanel > container > entity-lookup > textbox-btn': {
+			'cytopanel > container > entity-lookup > combo-lookup-btn': { // textbox-btn': {
 				click: this.onClickTextbox
 			},
 //			'cytopanel > container > container > container > button': {
@@ -77,14 +77,47 @@ Ext.define('APP.controller.Panels', {
 		// OUR NODE definition!!!
 		var nodeOpts = {
 			id: newId.toString(),
-			label: evOpts.value,
+			label: evOpts.label,
 			// entity: APP.lib.CytoscapeActions.shape2entity[shape], // this is a Number
 			// entity: entityWidget.shape2entity[shape],
 			entity: evOpts.meta,
 			payloadValue: evOpts.value
 		};
 
-		APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
+		if (evOpts.meta == "protein") {
+// Get Uniprot accession from label
+			var theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
+			Ext.data.JsonP.request({
+				url: theUrl,
+
+				callback: function (opts, resp) {
+					console.log('ajax callback for uniprot info');
+				},
+
+				failure: function (resp, opts) {
+					return false;
+				},
+
+				success: function (resp, opts) {
+					var jsonObj = resp;
+					var uniprotUrl = jsonObj.accessions[0];
+					var initIdx = uniprotUrl.indexOf('>');
+					var endIdx = uniprotUrl.indexOf('<', initIdx);
+					var acc = uniprotUrl.substring(initIdx+1, endIdx);
+
+					var payload = {
+						uuid: evOpts.value,
+						acc: acc
+					}
+					nodeOpts.payloadValue = payload;
+					APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
+
+				}
+			})
+
+		}
+		else
+			APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
 
 //		vis.addNode(20, 20, nodeOpts);
 	},
