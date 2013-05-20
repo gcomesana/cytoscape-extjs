@@ -8,14 +8,14 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 	 * Template for a function object. The alias will be the value which will be
 	 * assigned to the rules. When the rule have to be run, the actual function will
 	 * be get from the alias
-	 * @type {{alias: string, func: Function}}
+	 * @type {{alias: string}}
 	 */
 	var interactionFunc = {
 		// result: undefined,
 		// threshold: undefined,
-		alias: 'target-target-interactions',
+		alias: 'target-target-interactions'
 
-		/**
+		/*
 		 * Template function Object to get along a rule
 		 * Gets interactions among the two values
 		 * Call the API at localhost:<rails_port>/api/interactions/target1/target2?conf_val=val
@@ -24,13 +24,11 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 		 * @param {Number} threshold the confidence value to filter the interactions
 		 * @param {Object} funcObj the javascript object containing result, threshold and alias properties
 		 * @return {Object} an object with information about the found interactions
-		 */
+		 /
+		*
 		func: function (valSrc, valTrg, threshold, funcObj) {
 			// console.log('calling interactionFunc.interaction: '+valSrc+', '+valTrg);
 			var url = 'http://localhost:3003/api/interactions/'+valSrc+'/'+valTrg+'.jsonp';
-			/* url = (threshold === undefined || threshold == null)? url: url+
-				'?threshold='+threshold;
-      */
 
 			Ext.data.JsonP.request({
 				url: url,
@@ -62,15 +60,17 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 			})
 		} // EO func member
+		*/
 	}; // EO interactionFunc object
 
 // TODO functions should be kept in a store, with members result, threshold, result, func
-	var ruleFunctionsStore = [interactionFunc];
+//	var ruleFunctionsStore = [interactionFunc];
 
 
-
-	var interactionOp = Ext.create('APP.lib.InteractionsRuleOperation', {});
-	var operationStore = [interactionOp]; // Actual logic for rule operations come from here!!!!
+	var interactionOp = Ext.create('APP.lib.operation.InteractionsRuleOperation', {});
+	var geneProteinOp = Ext.create('APP.lib.operation.GeneProteinOperation', {});
+	var proteinGeneOp = Ext.create('APP.lib.operation.ProteinGeneOperation', {});
+	var operationStore = [interactionOp, geneProteinOp, proteinGeneOp]; // Actual logic for rule operations come from here!!!!
 
 	var notImplementedYet = function (valSrc, valTrg, threshold, funcObj) {
 		console.error('Not implemented yet...');
@@ -81,19 +81,23 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 	return {
 
-		requires: ['APP.lib.Util', 'APP.lib.RuleOperation', 'APP.lib.InteractionsRuleOperation'],
-
+		requires: ['APP.lib.Util', 'APP.lib.operation.RuleOperation',
+			'APP.lib.operation.InteractionsRuleOperation', 'APP.lib.operation.GeneProteinOperation'],
+/*
 		constructor: function () {
 			console.log("RuleFunctions constructor!!!");
 			this.callParent(arguments);
 
 			// var op = Ext.create('APP.lib.RuleOperation', {});
-			var op = Ext.create('APP.lib.InteractionsRuleOperation', {});
+			var opInteractions = Ext.create('APP.lib.operation.InteractionsRuleOperation', {});
+			var opGeneProtein = Ext.create('APP.lib.operation.GeneProteinOperation', {});
 			console.log('op.alias: '+op.alias);
-			operationStore.push(op);
+			operationStore.push(opInteractions);
+			operationStore.push(opGeneProtein);
 		},
-
+*/
 		statics: {
+			/*
 			getFunctionsRule: function (entitySrc, entityTarget) {
 				var funcArray = [];
 				var clonedFunc;
@@ -120,7 +124,7 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 				}
 				return funcArray;
 			}, // EO getFunctionsRule
-
+			*/
 
 			/**
 			 * Gets a list of function aliases matching with source and target entities.
@@ -136,16 +140,39 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 					threshold: undefined
 				};
 
-				switch (entitySrc) {
+				var srcEntityCode = APP.lib.CytoscapeActions.convert2entity(entitySrc);
+				var trgEntityCode = APP.lib.CytoscapeActions.convert2entity(entityTarget);
+
+				// switch (entitySrc) {
+				switch (srcEntityCode) {
 					case APP.lib.CytoscapeActions.PROTEIN:
-						switch (entityTarget) {
+						switch (trgEntityCode) {
 							case APP.lib.CytoscapeActions.PROTEIN:
 								aliasObj.alias =  interactionFunc.alias;
 								aliasArray.push(aliasObj);
 								break;
 
+							case APP.lib.CytoscapeActions.GENE:
+								aliasObj.alias = 'protein-gene-operation';
+								aliasArray.push(aliasObj);
+								break;
+
 							default:
 								aliasObj.alias =  interactionFunc.alias;
+								aliasArray.push(aliasObj);
+								break;
+						}
+						break;
+
+					case APP.lib.CytoscapeActions.GENE:
+						switch (trgEntityCode) {
+							case APP.lib.CytoscapeActions.PROTEIN:
+								aliasObj.alias = 'gene-protein-operation';
+								aliasArray.push(aliasObj);
+								break;
+
+							default:
+								aliasObj.alias = 'gene-protein-operation';
 								aliasArray.push(aliasObj);
 								break;
 						}
@@ -182,6 +209,7 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 			},
 
 
+			/*
 			getFunctionFromAlias: function (alias) {
 				var theFunc = null;
 				Ext.each(ruleFunctionsStore, function (ruleFunc, index, functionSet) {
@@ -193,7 +221,7 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 				return theFunc
 			},
-
+			*/
 
 			test: function (param) {
 				return 'RuleFunctions.test('+param+') was called'

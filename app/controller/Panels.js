@@ -82,47 +82,70 @@ Ext.define('APP.controller.Panels', {
 		}
 
 		// OUR NODE definition!!!
+		var nodeLabel = '';
+		if (evOpts.meta == 'gene') {
+			var startIndex = evOpts.label.indexOf('(');
+			var endIndex = evOpts.label.indexOf(')');
+			nodeLabel = evOpts.label.substring(startIndex+1, endIndex);
+			var labelArray = nodeLabel.split(' ');
+			nodeLabel = labelArray.join(', ');
+		}
+		else if (evOpts.meta == 'protein')
+			nodeLabel = evOpts.label;
+
 		var nodeOpts = {
 			id: newId.toString(),
-			label: evOpts.label,
+			label: nodeLabel,
 			// entity: APP.lib.CytoscapeActions.shape2entity[shape], // this is a Number
 			// entity: entityWidget.shape2entity[shape],
 			entity: evOpts.meta,
 			payloadValue: evOpts.value
 		};
 
-		if (evOpts.meta == "protein") {
+
+		var theUrl = '';
+		if (evOpts.meta == "protein")
 // Get Uniprot accession from label
-			var theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
-			Ext.data.JsonP.request({
-				url: theUrl,
+			theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
 
-				callback: function (opts, resp) {
-					console.log('ajax callback for uniprot info');
-				},
-
-				failure: function (resp, opts) {
-					return false;
-				},
-
-				success: function (resp, opts) {
-					var jsonObj = resp;
-					var uniprotUrl = jsonObj.accessions[0];
-					var initIdx = uniprotUrl.indexOf('>');
-					var endIdx = uniprotUrl.indexOf('<', initIdx);
-					var acc = uniprotUrl.substring(initIdx+1, endIdx);
-
-					var payload = {
-						uuid: evOpts.value,
-						acc: acc
-					}
-					nodeOpts.payloadValue = payload;
-					APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
-				}
-			})
+		else if (evOpts.meta == 'gene') {
+			theUrl = "http://lady-qu.cnio.es:3003/api/target/by_gene.jsonp?genename=";
+			var genename = nodeLabel.split(',')[0].trim();
+			theUrl += genename;
 		}
+
 		else
-			APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
+			// APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
+			theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
+
+		Ext.data.JsonP.request({
+			url: theUrl,
+
+			callback: function (opts, resp) {
+				console.log('ajax callback for uniprot info');
+			},
+
+			failure: function (resp, opts) {
+				return false;
+			},
+
+			success: function (resp, opts) {
+				var jsonObj = resp;
+				var uniprotUrl = jsonObj.accessions[0];
+				var initIdx = uniprotUrl.indexOf('>');
+				var endIdx = uniprotUrl.indexOf('<', initIdx);
+				var acc = uniprotUrl.substring(initIdx+1, endIdx);
+
+				var payload = {
+					uuid: evOpts.value, // when gene, here will be literal -> acc|gene id list
+					acc: acc
+				}
+				nodeOpts.payloadValue = payload;
+				APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
+			}
+		}) // EO JSONP req
+
+
 
 //		vis.addNode(20, 20, nodeOpts);
 	},

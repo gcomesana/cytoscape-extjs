@@ -2,7 +2,7 @@
  * This is a lib with static methods to operate on a cytoscape instance
  */
 Ext.define('APP.lib.CytoscapeActions', {
-	requires: ['APP.lib.EdgeRuleFactory', 'APP.lib.EdgeRule', 'APP.lib.RuleOperation',
+	requires: ['APP.lib.EdgeRuleFactory', 'APP.lib.EdgeRule', 'APP.lib.operation.RuleOperation',
 					'APP.lib.RuleFunctions', 'APP.lib.HypothesisRunner'],
 	statics: {
 
@@ -24,11 +24,31 @@ Ext.define('APP.lib.CytoscapeActions', {
 		/**
 		 * Converts from an entity string into an entity code
 		 */
-		convert2entity: {
-			'protein': undefined,
-			'compound': undefined,
-			'disease': undefined,
-			'gene':  undefined
+		convert2entity: function (entityName) {
+			var entity = -1;
+			switch (entityName) {
+				case 'protein':
+					entity = APP.lib.CytoscapeActions.PROTEIN;
+					break;
+
+				case 'compound':
+					entity = APP.lib.CytoscapeActions.COMPOUND;
+					break;
+
+				case 'disease':
+					entity = APP.lib.CytoscapeActions.DISEASE;
+					break;
+
+				case 'gene':
+					entity = APP.lib.CytoscapeActions.GENE;
+					break;
+
+				default:
+					entity = APP.lib.CytoscapeActions.PROTEIN;
+					break;
+			}
+
+			return entity;
 		},
 
 

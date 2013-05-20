@@ -13,8 +13,8 @@
  * /////
  * rfe.fireEvent('operationComplete');
  */
-Ext.define('APP.lib.InteractionsRuleOperation', {
-	extend: 'APP.lib.RuleOperation',
+Ext.define('APP.lib.operation.GeneProteinOperation', {
+	extend: 'APP.lib.operation.RuleOperation',
 	mixins: {
 		observable: 'Ext.util.Observable'
 	},
@@ -22,26 +22,11 @@ Ext.define('APP.lib.InteractionsRuleOperation', {
 	constructor: function (config) {
 		// this.initConfig(config);
 		this.callParent(arguments);
-		this.alias = 'target-target-interactions';
-		/*
-		 this.evName = 'operationComplete';
-		 this.result = null;
-		 this.threshold = null;
-
-		 this.mixins.observable.constructor.call(this, config);
-		 this.addEvents({
-		 'operationCompleted': true
-		 }),
-
-		 this.listeners = config.listeners;
-		 this.callParent(arguments);
-		 */
-
+		this.alias = 'gene-protein-operation';
 	},
 
 	/**
-	 * Gets interactions and evaluates the result to provide a value to decide if
-	 * the two targets (in this particular case) interact each other
+	 * Query uniprot to see if the gene product is the target node.
 	 * @param edgeSrc, the edge object for the source node
 	 * @param edgeTrg, the edge object for the target node
 	 * @param threshold, the value threshold
@@ -51,7 +36,8 @@ Ext.define('APP.lib.InteractionsRuleOperation', {
 		var me = this;
 		var accSrc = edgeSrc.payloadValue.acc;
 		var accTrg = edgeTrg.payloadValue.acc;
-		var url = 'http://localhost:3003/api/interactions/'+accSrc+'/'+accTrg+'.jsonp';
+		var genename = edgeSrc.label.split(',')[0].trim();
+		var url = 'http://localhost:3003/api/target/by_gene.jsonp?genename='+genename;
 
 		Ext.data.JsonP.request({
 			url: url,
@@ -69,17 +55,24 @@ Ext.define('APP.lib.InteractionsRuleOperation', {
 
 			success: function (resp, opts) {
 				var jsonObj = resp;
-				var result;
-				var sumConfVal = 0;
-				if (jsonObj.totalCount > 0) {
-					Ext.each(jsonObj.interactions, function (inter, index, interactions) {
-						sumConfVal += inter.conf_value;
-					})
-					result = sumConfVal / jsonObj.totalCount;
-				}
+				var result = false;
 
-				funcObj.result = result === undefined? -1: result;
-				var hypothesiseResult = result !== undefined;
+				// To evaluate the hypothesis, search an entry in uniprot for the gene
+				// and check if any of the accessions matches with the target accession
+				Ext.each(jsonObj.accessions, function (acc, index, accessions) {
+					var init = acc.indexOf('>');
+					var end = acc.lastIndexOf('<');
+					var acc = acc.substring(init+1, end);
+
+					if (acc == accTrg) {
+						result = true;
+						return false;
+					}
+				});
+
+
+				funcObj.result = result;
+				var hypothesiseResult = result !== false;
 
 				var edgeId = 'e'+edgeSrc.id+'-'+edgeTrg.id;
 				console.log('Operation finished!!!: '+funcObj.result+' for '+edgeId);
