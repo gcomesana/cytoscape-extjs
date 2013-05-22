@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/lib/InteractionsRuleOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/InteractionsRuleOperation.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/lib/RuleOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/RuleOperation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/CytoscapeActions.js" afterPath="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/EdgeRuleFactory.js" afterPath="$PROJECT_DIR$/app/lib/EdgeRuleFactory.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/common/EntityLookup.js" afterPath="$PROJECT_DIR$/app/view/common/EntityLookup.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/Panels.js" afterPath="$PROJECT_DIR$/app/controller/Panels.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/RuleFunctions.js" afterPath="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="skelapp.iws" />
@@ -17,7 +13,7 @@
     <file path="/index.html" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368176201340" ignored="false" />
     <file path="/CytoPanel.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368543553493" ignored="false" />
     <file path="/MainCenter.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363784386394" ignored="false" />
-    <file path="/Panels.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369042164881" ignored="false" />
+    <file path="/Panels.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369135043054" ignored="false" />
     <file path="/CytoScape.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366734968742" ignored="false" />
     <file path="/TextboxButton.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368094198178" ignored="false" />
     <file path="/a.css" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363955334131" ignored="false" />
@@ -45,7 +41,7 @@
     <file path="/EdgeRuleFactoryTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366278957676" ignored="false" />
     <file path="/CytoscapeActionsTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366379133891" ignored="false" />
     <file path="/RuleFunctionEvent.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366378370372" ignored="false" />
-    <file path="/Dummy.txt" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369039058718" ignored="false" />
+    <file path="/Dummy.txt" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369132022722" ignored="false" />
     <file path="$PROJECT_DIR$/app/view/draw/FF.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366728642324" ignored="false" />
     <file path="$PROJECT_DIR$/app/view/draw/CanvasPanel.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366728642324" ignored="false" />
     <file path="$PROJECT_DIR$/app/view/draw/DrawingCanvas.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366728642324" ignored="false" />
@@ -113,16 +109,16 @@
       <file leaf-file-name="GeneProteinOperation.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="42" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.0">
+            <state line="66" column="30" selection-start="1974" selection-end="1974" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProteinGeneOperation.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/lib/operation/ProteinGeneOperation.js">
+      <file leaf-file-name="DiseaseProteinOperation.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1069" selection-end="1069" vertical-scroll-proportion="0.14712644">
+            <state line="28" column="62" selection-start="700" selection-end="700" vertical-scroll-proportion="0.3218391">
               <folding />
             </state>
           </provider>
@@ -131,7 +127,16 @@
       <file leaf-file-name="Panels.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="65" selection-start="3758" selection-end="3758" vertical-scroll-proportion="0.0">
+            <state line="176" column="0" selection-start="5028" selection-end="5028" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntityLookup.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/common/EntityLookup.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="111" column="64" selection-start="2764" selection-end="2764" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -156,22 +161,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test-runner.html" />
         <option value="$PROJECT_DIR$/app-test/specs/StoresTest.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/store/CWEntries.js" />
         <option value="$PROJECT_DIR$/app/view/panels/CytoPanel.js" />
-        <option value="$PROJECT_DIR$/app/view/common/EntityLookup.js" />
         <option value="$PROJECT_DIR$/app/view/common/ComboLookupButton.js" />
         <option value="$PROJECT_DIR$/app/lib/RuleOperation.js" />
         <option value="$PROJECT_DIR$/app/lib/EdgeRuleFactory.js" />
         <option value="$PROJECT_DIR$/app/lib/operation/RuleOperation.js" />
         <option value="$PROJECT_DIR$/app/lib/operation/InteractionsRuleOperation.js" />
-        <option value="$PROJECT_DIR$/app/controller/Panels.js" />
         <option value="$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js" />
         <option value="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
         <option value="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
         <option value="$PROJECT_DIR$/app/lib/operation/ProteinGeneOperation.js" />
+        <option value="$PROJECT_DIR$/app/view/common/EntityLookup.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js" />
+        <option value="$PROJECT_DIR$/app/controller/Panels.js" />
       </list>
     </option>
   </component>
@@ -250,6 +255,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -402,46 +408,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="operation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skelapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cytoapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="Errors" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="last_opened_file_path" value="/usr/local/git/bin/git" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig" serverName="lady-qu" serverId="323756b4-a331-4db6-afae-f64eeb7ebb52">
     <servers>
@@ -557,9 +540,8 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19226637" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20770878" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21844293" sideWeight="0.7922912" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28647014" sideWeight="0.7922912" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2244898" sideWeight="0.7922912" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2690854" sideWeight="0.7922912" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19319429" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -568,6 +550,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20770878" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -636,13 +619,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app-test/specs/CytoscapeActionsTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/panels/CytoPanel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="168" column="20" selection-start="3081" selection-end="3081" vertical-scroll-proportion="0.0" />
@@ -656,13 +632,6 @@
     <entry file="file://$PROJECT_DIR$/app/view/Viewport.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/common/EntityLookup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="42" selection-start="3861" selection-end="3861" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/cytoscape/CytoScape.js">
@@ -681,23 +650,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/HypothesisRunner.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="27" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="1" column="27" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/common/ComboLookupButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="3" selection-start="169" selection-end="169" vertical-scroll-proportion="-0.9494253">
-          <folding>
-            <marker date="1368699183000" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="65" selection-start="3758" selection-end="3758" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -723,13 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="42" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="67" selection-start="2419" selection-end="2419" vertical-scroll-proportion="0.0">
@@ -739,7 +690,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/operation/ProteinGeneOperation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1069" selection-end="1069" vertical-scroll-proportion="0.14712644">
+        <state line="54" column="8" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/common/EntityLookup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="64" selection-start="2764" selection-end="2764" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="30" selection-start="1974" selection-end="1974" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="176" column="0" selection-start="5028" selection-end="5028" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="62" selection-start="700" selection-end="700" vertical-scroll-proportion="0.3218391">
           <folding />
         </state>
       </provider>

@@ -62,10 +62,11 @@ Ext.define('APP.controller.Panels', {
 	 * Callback for the event when clicking a button in a textbox-btn component
 	 * contained in a entity-lookup widget
 	 * @param comp, a textbox-btn widget
-	 * @param evOpts the event options
+	 * @param evOpts the event options like: {id, label, meta, value}
 	 */
 	onClickTextbox: function (comp, evOpts) {
 		console.log('Panels.onClickTextBox: got value '+evOpts.value+' for '+evOpts.meta);
+
 
 		var cytoscape = this.getCytoscape();
 		var vis = cytoscape.vis;
@@ -81,17 +82,38 @@ Ext.define('APP.controller.Panels', {
 			existsNode = vis.node(newId);
 		}
 
-		// OUR NODE definition!!!
+		// OUR NODE definition and the endpoint to get info on the selected 'thing'!!!
 		var nodeLabel = '';
+		var theUrl = '';
 		if (evOpts.meta == 'gene') {
 			var startIndex = evOpts.label.indexOf('(');
 			var endIndex = evOpts.label.indexOf(')');
 			nodeLabel = evOpts.label.substring(startIndex+1, endIndex);
 			var labelArray = nodeLabel.split(' ');
 			nodeLabel = labelArray.join(', ');
+
+			theUrl = "http://lady-qu.cnio.es:3003/api/target/by_gene.jsonp?genename=";
+			var genename = nodeLabel.split(',')[0].trim();
+			theUrl += genename;
 		}
-		else if (evOpts.meta == 'protein')
+		else if (evOpts.meta == 'protein') {
 			nodeLabel = evOpts.label;
+			// Get Uniprot accession from label
+			theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
+		}
+
+		else if (evOpts.meta == 'compound') {
+			nodeLabel = evOpts.label;
+			theUrl = "http://lady-qu.cnio.es:3003/pharma/compound/info.jsonp?uri=http://www.conceptwiki.org/concept/"+evOpts.value;
+		}
+
+		else if (evOpts.meta == 'disease') {
+			var endIndex = evOpts.label.lastIndexOf(';');
+			nodeLabel = evOpts.label.substring(0, endIndex);
+			theUrl = 'http://lady-qu.cnio.es:3003/pharma/disease/genemap.jsonp?mim_number='+evOpts.value;
+		}
+		else
+			theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
 
 		var nodeOpts = {
 			id: newId.toString(),
@@ -103,9 +125,8 @@ Ext.define('APP.controller.Panels', {
 		};
 
 
-		var theUrl = '';
+/*
 		if (evOpts.meta == "protein")
-// Get Uniprot accession from label
 			theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
 
 		else if (evOpts.meta == 'gene') {
@@ -117,7 +138,7 @@ Ext.define('APP.controller.Panels', {
 		else
 			// APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
 			theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
-
+*/
 		Ext.data.JsonP.request({
 			url: theUrl,
 
@@ -131,21 +152,54 @@ Ext.define('APP.controller.Panels', {
 
 			success: function (resp, opts) {
 				var jsonObj = resp;
-				var uniprotUrl = jsonObj.accessions[0];
-				var initIdx = uniprotUrl.indexOf('>');
-				var endIdx = uniprotUrl.indexOf('<', initIdx);
-				var acc = uniprotUrl.substring(initIdx+1, endIdx);
+				var getNodeOpts = function () {
+					// nodeOpts, jsonObj is a free variable
+					var payload = {};
+					if (jsonObj.accessions !== undefined && jsonObj.accessions != null) { // uniprot response on proteinInfo
+						var uniprotUrl = jsonObj.accessions[0];
+						var initIdx = uniprotUrl.indexOf('>');
+						var endIdx = uniprotUrl.indexOf('<', initIdx);
+						var acc = uniprotUrl.substring(initIdx+1, endIdx);
 
-				var payload = {
-					uuid: evOpts.value, // when gene, here will be literal -> acc|gene id list
-					acc: acc
-				}
-				nodeOpts.payloadValue = payload;
+						payload = {
+							uuid: evOpts.value, // when gene, here will be literal -> acc|gene id list
+							acc: acc
+						}
+					}
+					else if (jsonObj.genes != null && jsonObj.genes.length > 0) { // for omim response
+						// check the object to see whether or not include the list of genes
+						payload = {
+							uuid: jsonObj.genes[0].mim_number,
+							acc: jsonObj.genes[0].gene_symbol
+						}
+					}
+					else if (jsonObj.result._about.match(/compound/) != null) { // compound info requested
+						var conceptUri = jsonObj.result.primaryTopic._about;
+						var uuid = conceptUri.substring(conceptUri.lastIndexOf('/')+1, conceptUri.length);
+						var matches = jsonObj.result.primaryTopic.exactMatch;
+						var chemblId = '';
+						Ext.each(matches, function (entry, index, entries) {
+							if (entry._about.indexOf('CHEMBL') != -1){
+								chemblId = entry._about.substring(entry._about.lastIndexOf('/')+1, entry._about.length);
+								return false;
+							}
+						});
+
+						payload = {
+							uuid: uuid,
+							acc: undefined,
+							chemblId: chemblId
+						}
+					} 
+
+					nodeOpts.payloadValue = payload;
+				} // EO auxiliary conversion function
+
+				getNodeOpts();
 				APP.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
-			}
+			} // EO success
+
 		}) // EO JSONP req
-
-
 
 //		vis.addNode(20, 20, nodeOpts);
 	},
