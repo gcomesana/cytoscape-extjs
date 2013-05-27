@@ -1,10 +1,10 @@
 
-Ext.require(['APP.lib.Util']);
+Ext.require(['HT.lib.Util']);
 
 /**
  * This class gets (and keeps) all possible paths to walk in a graph.
  */
-Ext.define('APP.lib.HypothesisRunner', {
+Ext.define('HT.lib.HypothesisRunner', {
 
 	edges: undefined, // the graph edges
 	edgesVisited: undefined, // the visited edges
@@ -219,7 +219,7 @@ Ext.define('APP.lib.HypothesisRunner', {
 	pathsToString: function () {
 		var stringPaths = '';
 		Ext.each(this.paths, function (path, index, paths) {
-			var pathStr = APP.lib.Util.objToString(path, '');
+			var pathStr = HT.lib.Util.objToString(path, '');
 			console.log(pathStr);
 			console.log('=========');
 

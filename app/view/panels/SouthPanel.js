@@ -1,4 +1,4 @@
-Ext.define('APP.view.panels.SouthPanel', {
+Ext.define('HT.view.panels.SouthPanel', {
 
 	extend:'Ext.panel.Panel',
 	alias:'widget.southpanel',

@@ -1,7 +1,7 @@
 /**
  * Container to paint forms
  */
-Ext.define("APP.view.draw.DrawingCanvas", {
+Ext.define("HT.view.draw.DrawingCanvas", {
 	extend:'Ext.draw.Component',
 	alias:'widget.drawing-canvas',
 

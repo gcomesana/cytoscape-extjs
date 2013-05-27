@@ -26,11 +26,11 @@ var ff = Ext.create('Ext.draw.Component', {
 });
 */
 
-Ext.define('APP.view.panels.MainCenter', {
+Ext.define('HT.view.panels.MainCenter', {
 	extend:'Ext.tab.Panel',
 	alias:'widget.maincenter',
 
-	requires:['APP.view.panels.CytoPanel', 'APP.view.draw.CanvasPanel'],
+	requires:['HT.view.panels.CytoPanel', 'HT.view.draw.CanvasPanel'],
 
 	activeItem:0,
 	margins:'5 5 5 5',
@@ -58,7 +58,7 @@ Ext.define('APP.view.panels.MainCenter', {
 	initComponent: function () {
 		/*
 		var canvas = this.createDrawingCanvas();
-		var canvasPanel = Ext.create('APP.view.draw.CanvasPanel')
+		var canvasPanel = Ext.create('HT.view.draw.CanvasPanel')
 		var me = this;
 		this.items = [
 			canvas
@@ -88,7 +88,7 @@ Ext.define('APP.view.panels.MainCenter', {
 
 
 	createDrawingCanvas: function () {
-		var dc = Ext.create ('APP.view.draw.DrawingCanvas');
+		var dc = Ext.create ('HT.view.draw.DrawingCanvas');
 
 		return dc;
 	}

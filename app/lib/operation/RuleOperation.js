@@ -13,7 +13,7 @@
  * /////
  * rfe.fireEvent('operationComplete');
  */
-Ext.define('APP.lib.operation.RuleOperation', {
+Ext.define('HT.lib.operation.RuleOperation', {
 	// extend: 'Ext.util.Observable',
 	mixins: {
 		observable: 'Ext.util.Observable'

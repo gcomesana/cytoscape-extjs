@@ -128,11 +128,11 @@ var myVisualStyle = {
  * A panel with two containers: one container is the cytoscape itself, the
  * other controllers to do operations on the graph
  */
-Ext.define('APP.view.panels.CytoPanel', {
+Ext.define('HT.view.panels.CytoPanel', {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.cytopanel',
-	requires: ['APP.view.cytoscape.CytoScape', 'APP.view.common.TextboxButton',
-						'APP.view.common.EntityLookup'],
+	requires: ['HT.view.cytoscape.CytoScape', 'HT.view.common.TextboxButton',
+						'HT.view.common.EntityLookup'],
 
 	networkModel: undefined,
 

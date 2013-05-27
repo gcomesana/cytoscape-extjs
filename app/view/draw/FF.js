@@ -1,5 +1,5 @@
 
-Ext.define('APP.view.draw.FF', {
+Ext.define('HT.view.draw.FF', {
 	extend: 'Ext.draw.Component',
 	alias: 'widget.firefox',
 

@@ -12,11 +12,11 @@
  If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
 
  */
-Ext.define('APP.view.Viewer', {
+Ext.define('HT.view.Viewer', {
 	extend:'Ext.tab.Panel',
 	alias:'widget.viewer',
 
-	requires:['APP.view.feed.Show'],
+	requires:['HT.view.feed.Show'],
 
 	activeItem:0,
 	margins:'5 5 5 5',

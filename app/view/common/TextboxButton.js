@@ -1,7 +1,7 @@
 /**
  * Just a textbox + button ready to embed whatever...
  */
-Ext.define('APP.view.common.TextboxButton', {
+Ext.define('HT.view.common.TextboxButton', {
 	extend: 'Ext.container.Container',
 	alias: 'widget.textbox-btn',
 

@@ -19,12 +19,12 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
-	name:'APP',
+	name:'HT',
 
 	// All the paths for custom classes
 	paths:{
 		// 'Ext.ux':'../../../examples/ux/',
-		'APP': 'app'
+		'HT': 'app'
 	},
 
 	// Define all the controllers that should initialize at boot up of your application

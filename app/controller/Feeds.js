@@ -12,7 +12,7 @@ This file may be used under the terms of the GNU General Public License version 
 If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
 
 */
-Ext.define('APP.controller.Feeds', {
+Ext.define('HT.controller.Feeds', {
     extend: 'Ext.app.Controller',
 
     stores: ['Feeds', 'Articles'],
@@ -34,7 +34,7 @@ Ext.define('APP.controller.Feeds', {
         }
     ],
     
-    requires: ['APP.lib.FeedValidator'],
+    requires: ['HT.lib.FeedValidator'],
 
     // At this point things haven't rendered yet since init gets called on controllers before the launch function
     // is executed on the Application
@@ -65,7 +65,7 @@ Ext.define('APP.controller.Feeds', {
     
     /**
      * Loads the given feed into the viewer
-     * @param {APP.model.feed} feed The feed to load
+     * @param {HT.model.feed} feed The feed to load
      */
     loadFeed: function(selModel, selected) {
         var grid = this.getArticleGrid(),
@@ -92,7 +92,7 @@ Ext.define('APP.controller.Feeds', {
     
     /**
      * Removes the given feed from the Feeds store
-     * @param {APP.model.Feed} feed The feed to remove
+     * @param {HT.model.Feed} feed The feed to remove
      */
     removeFeed: function() {
         this.getFeedsStore().remove(this.getFeedData().getSelectionModel().getSelection()[0]);
@@ -101,7 +101,7 @@ Ext.define('APP.controller.Feeds', {
     /**
      * @private
      * Creates a new feed in the store based on a given url. First validates that the feed is well formed
-     * using APP.lib.FeedValidator.
+     * using HT.lib.FeedValidator.
      * @param {String} name The name of the Feed to create
      * @param {String} url The url of the Feed to create
      */
@@ -119,7 +119,7 @@ Ext.define('APP.controller.Feeds', {
             msg: 'Validating feed...'
         });
         
-        APP.lib.FeedValidator.validate(feed, {
+        HT.lib.FeedValidator.validate(feed, {
             success: function() {
                 store.add(feed);
                 form.setLoading(false);

@@ -1,7 +1,5 @@
-
-
-// Ext.require('APP.lib.RuleFunctionEvent')
-Ext.define('APP.lib.RuleFunctions', (function () {
+// Ext.require('HT.lib.RuleFunctionEvent')
+Ext.define('HT.lib.RuleFunctions', (function () {
 
 
 	/**
@@ -25,52 +23,58 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 		 * @param {Object} funcObj the javascript object containing result, threshold and alias properties
 		 * @return {Object} an object with information about the found interactions
 		 /
-		*
-		func: function (valSrc, valTrg, threshold, funcObj) {
-			// console.log('calling interactionFunc.interaction: '+valSrc+', '+valTrg);
-			var url = 'http://localhost:3003/api/interactions/'+valSrc+'/'+valTrg+'.jsonp';
+		 *
+		 func: function (valSrc, valTrg, threshold, funcObj) {
+		 // console.log('calling interactionFunc.interaction: '+valSrc+', '+valTrg);
+		 var url = 'http://localhost:3003/api/interactions/'+valSrc+'/'+valTrg+'.jsonp';
 
-			Ext.data.JsonP.request({
-				url: url,
-				params: {
-					threshold: (threshold === undefined || threshold == null)? 0.0: threshold
-				},
+		 Ext.data.JsonP.request({
+		 url: url,
+		 params: {
+		 threshold: (threshold === undefined || threshold == null)? 0.0: threshold
+		 },
 
-				callback: function (opts, resp) {
-					console.log('ajax callback');
-				},
+		 callback: function (opts, resp) {
+		 console.log('ajax callback');
+		 },
 
-				failure: function (resp, opts) {
-					funcObj.result = -1;
-				},
+		 failure: function (resp, opts) {
+		 funcObj.result = -1;
+		 },
 
-				success: function (resp, opts) {
-					var jsonObj = resp;
-					var result = jsonObj.totalCount;
-					var sumConfVal = 0;
-					if (jsonObj.totalCount > 0) {
-						Ext.each(jsonObj.interactions, function (inter, index, interactions) {
-							sumConfVal += inter.conf_value;
-						})
-						result = sumConfVal / jsonObj.totalCount;
-					}
+		 success: function (resp, opts) {
+		 var jsonObj = resp;
+		 var result = jsonObj.totalCount;
+		 var sumConfVal = 0;
+		 if (jsonObj.totalCount > 0) {
+		 Ext.each(jsonObj.interactions, function (inter, index, interactions) {
+		 sumConfVal += inter.conf_value;
+		 })
+		 result = sumConfVal / jsonObj.totalCount;
+		 }
 
-					funcObj.result = result;
-				}
+		 funcObj.result = result;
+		 }
 
-			})
-		} // EO func member
-		*/
+		 })
+		 } // EO func member
+		 */
 	}; // EO interactionFunc object
 
 // TODO functions should be kept in a store, with members result, threshold, result, func
 //	var ruleFunctionsStore = [interactionFunc];
 
 
-	var interactionOp = Ext.create('APP.lib.operation.InteractionsRuleOperation', {});
-	var geneProteinOp = Ext.create('APP.lib.operation.GeneProteinOperation', {});
-	var proteinGeneOp = Ext.create('APP.lib.operation.ProteinGeneOperation', {});
-	var operationStore = [interactionOp, geneProteinOp, proteinGeneOp]; // Actual logic for rule operations come from here!!!!
+	var interactionOp = Ext.create('HT.lib.operation.InteractionsRuleOperation', {});
+	var geneProteinOp = Ext.create('HT.lib.operation.GeneProteinOperation', {});
+	var proteinGeneOp = Ext.create('HT.lib.operation.ProteinGeneOperation', {});
+	var diseaseGeneOp = Ext.create('HT.lib.operation.DiseaseGeneOperation', {});
+	var diseaseProteinOp = Ext.create('HT.lib.operation.DiseaseProteinOperation', {});
+	var geneCompoundOp = Ext.create('HT.lib.operation.GeneCompoundOperation', {});
+
+
+	var operationStore = [interactionOp, geneProteinOp, proteinGeneOp,
+				diseaseGeneOp, diseaseProteinOp, geneCompoundOp]; // Actual logic for rule operations come from here!!!!
 
 	var notImplementedYet = function (valSrc, valTrg, threshold, funcObj) {
 		console.error('Not implemented yet...');
@@ -81,50 +85,51 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 	return {
 
-		requires: ['APP.lib.Util', 'APP.lib.operation.RuleOperation',
-			'APP.lib.operation.InteractionsRuleOperation', 'APP.lib.operation.GeneProteinOperation'],
-/*
-		constructor: function () {
-			console.log("RuleFunctions constructor!!!");
-			this.callParent(arguments);
+		requires: ['HT.lib.Util', 'HT.lib.operation.RuleOperation',
+			'HT.lib.operation.InteractionsRuleOperation',
+			'HT.lib.operation.GeneProteinOperation'],
+		/*
+		 constructor: function () {
+		 console.log("RuleFunctions constructor!!!");
+		 this.callParent(arguments);
 
-			// var op = Ext.create('APP.lib.RuleOperation', {});
-			var opInteractions = Ext.create('APP.lib.operation.InteractionsRuleOperation', {});
-			var opGeneProtein = Ext.create('APP.lib.operation.GeneProteinOperation', {});
-			console.log('op.alias: '+op.alias);
-			operationStore.push(opInteractions);
-			operationStore.push(opGeneProtein);
-		},
-*/
+		 // var op = Ext.create('HT.lib.RuleOperation', {});
+		 var opInteractions = Ext.create('HT.lib.operation.InteractionsRuleOperation', {});
+		 var opGeneProtein = Ext.create('HT.lib.operation.GeneProteinOperation', {});
+		 console.log('op.alias: '+op.alias);
+		 operationStore.push(opInteractions);
+		 operationStore.push(opGeneProtein);
+		 },
+		 */
 		statics: {
 			/*
-			getFunctionsRule: function (entitySrc, entityTarget) {
-				var funcArray = [];
-				var clonedFunc;
+			 getFunctionsRule: function (entitySrc, entityTarget) {
+			 var funcArray = [];
+			 var clonedFunc;
 
-				switch (entitySrc) {
-					case APP.lib.CytoscapeActions.PROTEIN:
-						switch (entityTarget) {
-							case APP.lib.CytoscapeActions.PROTEIN:
-								clonedFunc = APP.lib.Util.clone(interactionFunc);
-								funcArray.push(clonedFunc);
-								break;
+			 switch (entitySrc) {
+			 case HT.lib.CytoscapeActions.PROTEIN:
+			 switch (entityTarget) {
+			 case HT.lib.CytoscapeActions.PROTEIN:
+			 clonedFunc = HT.lib.Util.clone(interactionFunc);
+			 funcArray.push(clonedFunc);
+			 break;
 
-							default:
-								clonedFunc = APP.lib.Util.clone(interactionFunc);
-								funcArray.push(clonedFunc);
-								break;
-						}
-						break;
+			 default:
+			 clonedFunc = HT.lib.Util.clone(interactionFunc);
+			 funcArray.push(clonedFunc);
+			 break;
+			 }
+			 break;
 
-					default:
-						clonedFunc = APP.lib.Util.clone(interactionFunc);
-						funcArray.push(clonedFunc);
-						break;
-				}
-				return funcArray;
-			}, // EO getFunctionsRule
-			*/
+			 default:
+			 clonedFunc = HT.lib.Util.clone(interactionFunc);
+			 funcArray.push(clonedFunc);
+			 break;
+			 }
+			 return funcArray;
+			 }, // EO getFunctionsRule
+			 */
 
 			/**
 			 * Gets a list of function aliases matching with source and target entities.
@@ -140,47 +145,93 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 					threshold: undefined
 				};
 
-				var srcEntityCode = APP.lib.CytoscapeActions.convert2entity(entitySrc);
-				var trgEntityCode = APP.lib.CytoscapeActions.convert2entity(entityTarget);
+				var srcEntityCode = HT.lib.CytoscapeActions.convert2entity(entitySrc);
+				var trgEntityCode = HT.lib.CytoscapeActions.convert2entity(entityTarget);
 
 				// switch (entitySrc) {
 				switch (srcEntityCode) {
-					case APP.lib.CytoscapeActions.PROTEIN:
+					case HT.lib.CytoscapeActions.PROTEIN:
 						switch (trgEntityCode) {
-							case APP.lib.CytoscapeActions.PROTEIN:
-								aliasObj.alias =  interactionFunc.alias;
+							case HT.lib.CytoscapeActions.PROTEIN:
+								aliasObj.alias = interactionFunc.alias;
 								aliasArray.push(aliasObj);
 								break;
 
-							case APP.lib.CytoscapeActions.GENE:
+							case HT.lib.CytoscapeActions.GENE:
 								aliasObj.alias = 'protein-gene-operation';
 								aliasArray.push(aliasObj);
 								break;
 
 							default:
-								aliasObj.alias =  interactionFunc.alias;
+								aliasObj.alias = interactionFunc.alias;
 								aliasArray.push(aliasObj);
 								break;
-						}
+						} // EO switch
 						break;
 
-					case APP.lib.CytoscapeActions.GENE:
+					case HT.lib.CytoscapeActions.GENE:
 						switch (trgEntityCode) {
-							case APP.lib.CytoscapeActions.PROTEIN:
+							case HT.lib.CytoscapeActions.PROTEIN:
 								aliasObj.alias = 'gene-protein-operation';
 								aliasArray.push(aliasObj);
 								break;
 
+							case HT.lib.CytoscapeActions.COMPOUND:
+								aliasObj.alias = 'gene-compound-operation';
+								aliasArray.push(aliasObj);
+								break;
+							/*
+							case HT.lib.CytoscapeActions.DISEASE:
+								aliasObj.alias = 'gene-disease-operation';
+								aliasArray.push(aliasObj);
+								break;
+							*/
 							default:
 								aliasObj.alias = 'gene-protein-operation';
 								aliasArray.push(aliasObj);
 								break;
+						} // EO switch
+						break;
+
+
+					case HT.lib.CytoscapeActions.DISEASE:
+						switch (trgEntityCode) {
+							case HT.lib.CytoscapeActions.GENE:
+								aliasObj.alias = 'disease-gene-operation';
+								aliasArray.push(aliasObj);
+								break;
+
+							case HT.lib.CytoscapeActions.PROTEIN:
+								aliasObj.alias = 'disease-protein-operation';
+								aliasArray.push(aliasObj);
+								break;
+
+							default:
+								aliasObj.alias = 'disease-gene-operation';
+								aliasArray.push(aliasObj);
+								break;
+						} // EO switch
+						break;
+
+
+					case HT.lib.CytoscapeActions.COMPOUND:
+						switch  (trgEntityCode) {
+							case HT.lib.CytoscapeActions.GENE:
+								aliasObj.alias = 'compound-gene-operation';
+								aliasArray.push(aliasObj);
+								break;
+
+							default:
+								aliasObj.alias = 'compound-gene-operation';
+								aliasArray.push(aliasObj);
+								break;
 						}
 						break;
 
+
 					default:
-						// var aliasFunc = APP.lib.Util.clone(interactionFunc);
-						aliasObj.alias =  interactionFunc.alias;
+						// var aliasFunc = HT.lib.Util.clone(interactionFunc);
+						aliasObj.alias = interactionFunc.alias;
 						aliasArray.push(aliasObj);
 						break;
 				}
@@ -194,7 +245,7 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 			 * just the alias to get the operation represented by the alias from here when
 			 * running the graph
 			 * @param {String} alias the alias of the operation
-			 * @return {APP.lib.RuleOperation} the operation object
+			 * @return {HT.lib.RuleOperation} the operation object
 			 */
 			getOperationFromAlias: function (alias) {
 				var theFunc = null;
@@ -210,21 +261,21 @@ Ext.define('APP.lib.RuleFunctions', (function () {
 
 
 			/*
-			getFunctionFromAlias: function (alias) {
-				var theFunc = null;
-				Ext.each(ruleFunctionsStore, function (ruleFunc, index, functionSet) {
-					if (ruleFunc.alias == alias) {
-						theFunc = ruleFunc.func;
-						return true;
-					}
-				})	// EO each
+			 getFunctionFromAlias: function (alias) {
+			 var theFunc = null;
+			 Ext.each(ruleFunctionsStore, function (ruleFunc, index, functionSet) {
+			 if (ruleFunc.alias == alias) {
+			 theFunc = ruleFunc.func;
+			 return true;
+			 }
+			 })	// EO each
 
-				return theFunc
-			},
-			*/
+			 return theFunc
+			 },
+			 */
 
 			test: function (param) {
-				return 'RuleFunctions.test('+param+') was called'
+				return 'RuleFunctions.test(' + param + ') was called'
 			}
 		} // EO statics
 

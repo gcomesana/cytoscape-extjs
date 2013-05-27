@@ -12,7 +12,7 @@ This file may be used under the terms of the GNU General Public License version 
 If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
 
 */
-Ext.define('APP.model.Article', {
+Ext.define('HT.model.Article', {
     extend: 'Ext.data.Model',
     
     fields: [

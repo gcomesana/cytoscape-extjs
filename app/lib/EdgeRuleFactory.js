@@ -6,8 +6,8 @@
  * alias is set for every function. When the function has to be executed, a mapper
  * will choose the right function from the set of actual functions.
  */
-Ext.define('APP.lib.EdgeRuleFactory', {
-	requires: ['APP.lib.EdgeRule', 'APP.lib.RuleFunctions'],
+Ext.define('HT.lib.EdgeRuleFactory', {
+	requires: ['HT.lib.EdgeRule', 'HT.lib.RuleFunctions'],
 
 	config: {},
 
@@ -36,7 +36,7 @@ Ext.define('APP.lib.EdgeRuleFactory', {
 				var srcEntity = source.entity, trgEntity = target.entity;
 				var functionsArray = [];
 
-				functionsArray = APP.lib.RuleFunctions.getFunctionsRule(srcEntity, trgEntity);
+				functionsArray = HT.lib.RuleFunctions.getFunctionsRule(srcEntity, trgEntity);
 
 				return functionsArray;
 			};
@@ -46,12 +46,12 @@ Ext.define('APP.lib.EdgeRuleFactory', {
 				var srcEntity = source.entity, trgEntity = target.entity;
 				var aliasesArray;
 
-				aliasesArray = APP.lib.RuleFunctions.getAliasesFunctions(srcEntity, trgEntity);
+				aliasesArray = HT.lib.RuleFunctions.getAliasesFunctions(srcEntity, trgEntity);
 
 				return aliasesArray;
 			};
 
-			// var newRule = Ext.create('APP.lib.EdgeRule', {
+			// var newRule = Ext.create('HT.lib.EdgeRule', {
 			var newRule = {
 				edgeSource: source,
 				edgeTarget: target,

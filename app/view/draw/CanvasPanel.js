@@ -1,9 +1,9 @@
 
 
-Ext.define("APP.view.draw.CanvasPanel", {
+Ext.define("HT.view.draw.CanvasPanel", {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.canvaspanel',
-	requires: ['APP.view.draw.DrawingCanvas'],
+	requires: ['HT.view.draw.DrawingCanvas'],
 
 	title: 'What a mess',
 	margins:'5 5 5 5',
@@ -38,7 +38,7 @@ Ext.define("APP.view.draw.CanvasPanel", {
 	},
 
 	createDrawingCanvas: function () {
-		var dc = Ext.create ('APP.view.draw.DrawingCanvas', {
+		var dc = Ext.create ('HT.view.draw.DrawingCanvas', {
 			x: 20,
 			y: 110
 		});

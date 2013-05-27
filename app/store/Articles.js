@@ -12,12 +12,12 @@ This file may be used under the terms of the GNU General Public License version 
 If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
 
 */
-Ext.define('APP.store.Articles', {
+Ext.define('HT.store.Articles', {
 	extend: 'Ext.data.Store',
 
     requires: ['Ext.data.reader.Xml'],
 
-    model: 'APP.model.Article',
+    model: 'HT.model.Article',
 
 	proxy: {
 		type: 'ajax',

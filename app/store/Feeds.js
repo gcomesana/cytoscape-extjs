@@ -12,10 +12,10 @@ This file may be used under the terms of the GNU General Public License version 
 If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
 
 */
-Ext.define('APP.store.Feeds', {
+Ext.define('HT.store.Feeds', {
     extend: 'Ext.data.Store',
 
-    model: 'APP.model.Feed',
+    model: 'HT.model.Feed',
 
     data: [
         {name: 'Sencha Blog',   url: 'http://feeds.feedburner.com/extblog'},

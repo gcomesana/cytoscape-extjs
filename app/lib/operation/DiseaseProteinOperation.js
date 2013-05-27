@@ -13,8 +13,8 @@
  * /////
  * rfe.fireEvent('operationComplete');
  */
-Ext.define('APP.lib.operation.GeneProteinOperation', {
-	extend: 'APP.lib.operation.RuleOperation',
+Ext.define('HT.lib.operation.DiseaseProteinOperation', {
+	extend: 'HT.lib.operation.RuleOperation',
 	mixins: {
 		observable: 'Ext.util.Observable'
 	},
@@ -22,11 +22,12 @@ Ext.define('APP.lib.operation.GeneProteinOperation', {
 	constructor: function (config) {
 		// this.initConfig(config);
 		this.callParent(arguments);
-		this.alias = 'gene-protein-operation';
+		this.alias = 'disease-protein-operation';
 	},
 
 	/**
-	 * Query uniprot to get the proteins involved in the disease
+	 * From the disease information from OMIM, gets if there is a relationship
+	 * between disease and target. Similar to disease-gene
 	 * @param edgeSrc, the edge object for the source node
 	 * @param edgeTrg, the edge object for the target node
 	 * @param threshold, the value threshold
@@ -37,51 +38,49 @@ Ext.define('APP.lib.operation.GeneProteinOperation', {
 		var accSrc = edgeSrc.payloadValue.acc;
 		var accTrg = edgeTrg.payloadValue.acc;
 		var genename = edgeSrc.label.split(',')[0].trim();
-		var url = 'http://localhost:3003/api/target/by_gene.jsonp?genename='+genename;
+		var url = 'http://localhost:3003/pharma/disease/genemap.json?mim_number='+edgeSrc.payloadValue.uuid; // OMIMid when entity = disease
 
-		Ext.data.JsonP.request({
-			url: url,
-			params: {
-				threshold: (threshold === undefined || threshold == null)? 0.0: threshold
-			},
+				Ext.data.JsonP.request({
+					url: url,
 
-			callback: function (opts, resp) {
-				console.log('ajax callback');
-			},
+					callback: function (opts, resp) {
+						console.log('ajax callback');
+					},
 
-			failure: function (resp, opts) {
-				funcObj.result = -1;
-			},
+					failure: function (resp, opts) {
+						funcObj.result = -1;
+					},
 
-			success: function (resp, opts) {
-				var jsonObj = resp;
-				var result = false;
+					// In this case, we just check if the gene names match
+					success: function (resp, opts) {
+						var jsonObj = resp;
+						var result = false;
 
-				// To evaluate the hypothesis, search an entry in uniprot for the gene
-				// and check if any of the accessions matches with the target accession
-				Ext.each(jsonObj.accessions, function (acc, index, accessions) {
-					var init = acc.indexOf('>');
-					var end = acc.lastIndexOf('<');
-					var acc = acc.substring(init+1, end);
+						var geneList = jsonObj.genes; // an array of {mim_number, gene_symbol} objects
+						Ext.each(geneList, function (geneObj, index, genesItself) {
+							var genes = geneObj.gene_symbol.split(',');
+							Ext.each(genes, function (genename, indexBis, geneArr) {
+								// if a genename is in the genes list, then result is true
+								if (payloadTrg.genes.indexOf(genename) != -1) {
+									result = true;
+									return false;
+								}
+							});
+							if (result = true)
+								return false; // finish outer each loop
+						});
 
-					if (acc == accTrg) {
-						result = true;
-						return false;
-					}
-				});
+						funcObj.result = result;
+						var hypothesiseResult = result !== false;
 
+						var edgeId = 'e'+edgeSrc.id+'-'+edgeTrg.id;
+						console.log('Operation finished!!!: '+funcObj.result+' for '+edgeId);
 
-				funcObj.result = result;
-				var hypothesiseResult = result !== false;
+						me.fireEvent('operationComplete', {result: funcObj.result, hypothesis: hypothesiseResult, edgeId: edgeId});
+					},
 
-				var edgeId = 'e'+edgeSrc.id+'-'+edgeTrg.id;
-				console.log('Operation finished!!!: '+funcObj.result+' for '+edgeId);
-
-				me.fireEvent('operationComplete', {result: funcObj.result, hypothesis: hypothesiseResult, edgeId: edgeId});
-			},
-
-			scope: me
-		})// EO JsonP request
+					scope: me
+				})// EO JsonP request
 	}
 
 });

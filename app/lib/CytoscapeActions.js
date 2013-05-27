@@ -1,9 +1,9 @@
 /**
  * This is a lib with static methods to operate on a cytoscape instance
  */
-Ext.define('APP.lib.CytoscapeActions', {
-	requires: ['APP.lib.EdgeRuleFactory', 'APP.lib.EdgeRule', 'APP.lib.operation.RuleOperation',
-					'APP.lib.RuleFunctions', 'APP.lib.HypothesisRunner'],
+Ext.define('HT.lib.CytoscapeActions', {
+	requires: ['HT.lib.EdgeRuleFactory', 'HT.lib.EdgeRule', 'HT.lib.operation.RuleOperation',
+					'HT.lib.RuleFunctions', 'HT.lib.HypothesisRunner'],
 	statics: {
 
 		GENE: 1,
@@ -28,23 +28,23 @@ Ext.define('APP.lib.CytoscapeActions', {
 			var entity = -1;
 			switch (entityName) {
 				case 'protein':
-					entity = APP.lib.CytoscapeActions.PROTEIN;
+					entity = HT.lib.CytoscapeActions.PROTEIN;
 					break;
 
 				case 'compound':
-					entity = APP.lib.CytoscapeActions.COMPOUND;
+					entity = HT.lib.CytoscapeActions.COMPOUND;
 					break;
 
 				case 'disease':
-					entity = APP.lib.CytoscapeActions.DISEASE;
+					entity = HT.lib.CytoscapeActions.DISEASE;
 					break;
 
 				case 'gene':
-					entity = APP.lib.CytoscapeActions.GENE;
+					entity = HT.lib.CytoscapeActions.GENE;
 					break;
 
 				default:
-					entity = APP.lib.CytoscapeActions.PROTEIN;
+					entity = HT.lib.CytoscapeActions.PROTEIN;
 					break;
 			}
 
@@ -74,7 +74,7 @@ Ext.define('APP.lib.CytoscapeActions', {
 				nodeOpts = {
 					id: nodeId.toString(),
 					label: nodeData,
-					entity: APP.view.common.EntityLookup.entity[nodeData],
+					entity: HT.view.common.EntityLookup.entity[nodeData],
 //					entity: 'protein',
 					payloadValue: nodeData
 
@@ -104,7 +104,7 @@ Ext.define('APP.lib.CytoscapeActions', {
 			if (currentEdge != null)
 				return false;
 
-			var edgeRule = APP.lib.EdgeRuleFactory.createRule(nodes[0].data, nodes[1].data);
+			var edgeRule = HT.lib.EdgeRuleFactory.createRule(nodes[0].data, nodes[1].data);
 			console.log('createEdge before edgeData...');
 			var edgeData = {
 				id: 'e'+nodeOneId.toString()+'-'+nodeTwoId.toString(),
@@ -147,7 +147,7 @@ Ext.define('APP.lib.CytoscapeActions', {
 		 */
 		runGraph: function (vis, nodes, edges) {
 
-			var runner = Ext.create('APP.lib.HypothesisRunner', edges, nodes);
+			var runner = Ext.create('HT.lib.HypothesisRunner', edges, nodes);
 			var paths = runner.graphWalker();
 
 			// This is to paint the edge on operation completion
@@ -181,7 +181,7 @@ Ext.define('APP.lib.CytoscapeActions', {
 					var aliases = rule.ruleAliases;
 
 					Ext.each(aliases, function(aliasObj, indexFunc, functionsList) {
-						var opObj = APP.lib.RuleFunctions.getOperationFromAlias(aliasObj.alias);
+						var opObj = HT.lib.RuleFunctions.getOperationFromAlias(aliasObj.alias);
 
 						opObj.clearListeners();
 						// Result is like {result: result, hypothesis: true|false, edge: theedge}
@@ -212,7 +212,7 @@ Ext.define('APP.lib.CytoscapeActions', {
 					edgeIndex++;
 					/*
 					Ext.each(functionObjs, function(aliasObj, indexFunc, functionsList) {
-						var actualFunc = APP.lib.RuleFunctions.getFunctionFromAlias(aliasObj.alias);
+						var actualFunc = HT.lib.RuleFunctions.getFunctionFromAlias(aliasObj.alias);
 						actualFunc(rule.edgeSource.payloadValue, rule.edgeTarget.payloadValue, aliasObj.threshold, aliasObj)
 					})
           */

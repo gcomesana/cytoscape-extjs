@@ -7,7 +7,7 @@
  * by every function and to provide a threshold to evaluate (further) if the hypothesis
  * can be asserted.
  */
-Ext.define('APP.lib.EdgeRule', {
+Ext.define('HT.lib.EdgeRule', {
 
 	config: {
 		/**

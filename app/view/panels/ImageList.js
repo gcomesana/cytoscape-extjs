@@ -1,7 +1,7 @@
-Ext.define('APP.view.panels.ImageList', {
+Ext.define('HT.view.panels.ImageList', {
 	extend:'Ext.panel.Panel',
 	alias:'widget.imglist',
-	requires: ['APP.view.draw.DrawingCanvas', 'Ext.toolbar.Toolbar'],
+	requires: ['HT.view.draw.DrawingCanvas', 'Ext.toolbar.Toolbar'],
 
 	title:'Images',
 	collapsible:true,

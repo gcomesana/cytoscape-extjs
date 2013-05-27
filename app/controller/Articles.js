@@ -12,7 +12,7 @@ This file may be used under the terms of the GNU General Public License version 
 If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
 
 */
-Ext.define('APP.controller.Articles', {
+Ext.define('HT.controller.Articles', {
     extend: 'Ext.app.Controller',
 
     stores: ['Articles'],
@@ -68,7 +68,7 @@ Ext.define('APP.controller.Articles', {
 
     /**
      * Loads the given article into the preview panel
-     * @param {APP.model.Article} article The article to load
+     * @param {HT.model.Article} article The article to load
      */
     previewArticle: function(grid, articles) {
         var article = articles[0],
@@ -102,7 +102,7 @@ Ext.define('APP.controller.Articles', {
 
     /**
      * Loads the given article into a new tab
-     * @param {APP.model.Article} article The article to load into a new tab
+     * @param {HT.model.Article} article The article to load into a new tab
      */
     loadArticle: function(view, article, preventAdd) {
         var viewer = this.getViewer(),

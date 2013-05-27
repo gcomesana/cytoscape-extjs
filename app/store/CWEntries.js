@@ -1,6 +1,6 @@
 
 
-Ext.define('APP.store.CWEntries', {
+Ext.define('HT.store.CWEntries', {
 	extend: 'Ext.data.Store',
 	requires: ['Ext.data.Store'],
 /*

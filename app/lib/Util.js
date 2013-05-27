@@ -1,4 +1,4 @@
-Ext.define('APP.lib.Util', {
+Ext.define('HT.lib.Util', {
 
 
 	config: {},
@@ -15,7 +15,7 @@ Ext.define('APP.lib.Util', {
 
 		var stringObj = '';
 		var me = this;
-		var objType = APP.lib.Util.getClass(obj);
+		var objType = HT.lib.Util.getClass(obj);
 
 		if (objType == 'Array') {
 			Ext.each(obj, function (elem, index, objArray) {
@@ -72,16 +72,16 @@ Ext.define('APP.lib.Util', {
 
 		objToString: function (obj, tabs) {
 			var stringObj = '';
-			var objType = APP.lib.Util.getClass(obj);
+			var objType = HT.lib.Util.getClass(obj);
 
 			if (objType == 'Array') {
 				Ext.each(obj, function (elem, index, objArray) {
 					if (Object.prototype.toString.call(elem).slice(8, -1) == 'Object')
-						stringObj += APP.lib.Util.objToString(elem, tabs+'\t')
+						stringObj += HT.lib.Util.objToString(elem, tabs+'\t')
 
 					else if (Object.prototype.toString.call(elem).slice(8, -1) == 'Array')
 						Ext.each(elem, function (item, index, array) {
-							stringObj += APP.lib.Util.objToString(item, tabs+'\t');
+							stringObj += HT.lib.Util.objToString(item, tabs+'\t');
 						})
 
 					else
@@ -94,11 +94,11 @@ Ext.define('APP.lib.Util', {
 
 				for(var key in obj) {
 					if (Object.prototype.toString.call(obj[key]).slice(8, -1) == 'Object')
-						stringObj += APP.lib.Util.objToString(obj[key], tabs+'\t')
+						stringObj += HT.lib.Util.objToString(obj[key], tabs+'\t')
 
 					else if (Object.prototype.toString.call(obj[key]).slice(8, -1) == 'Array')
 						Ext.each(obj[key], function (elem, index, array) {
-							stringObj += APP.lib.Util.objToString(elem, tabs+'\t');
+							stringObj += HT.lib.Util.objToString(elem, tabs+'\t');
 						})
 
 					else

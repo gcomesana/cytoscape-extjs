@@ -1,9 +1,9 @@
 
-Ext.define('APP.view.common.EntityLookup', {
+Ext.define('HT.view.common.EntityLookup', {
 	extend: 'Ext.container.Container',
 	alias: 'widget.entity-lookup',
-	requires: ['APP.view.common.TextboxButton', 'APP.view.common.ComboLookupButton',
-				'APP.store.CWEntries'],
+	requires: ['HT.view.common.TextboxButton', 'HT.view.common.ComboLookupButton',
+				'HT.store.CWEntries'],
 
 	layout: 'column',
 	/*
@@ -84,7 +84,7 @@ Ext.define('APP.view.common.EntityLookup', {
 		var sprite = this.getShapeConfig();
 
 // ComboLookupButton configuration /////////////////////////////////////////
-		var comboStore = Ext.create('APP.store.CWEntries');
+		var comboStore = Ext.create('HT.store.CWEntries');
 		var myEntity = this.getEntity();
 		var remoteUrl, queryParam;
 
@@ -135,7 +135,7 @@ Ext.define('APP.view.common.EntityLookup', {
 		});
 
 
-		var comboLookup = Ext.create('APP.view.common.ComboLookupButton', {
+		var comboLookup = Ext.create('HT.view.common.ComboLookupButton', {
 			metaInfo: this.getEntity(),
 			columnWidth: 0.7,
 			margin: '3 5 0 5',

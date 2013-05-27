@@ -13,20 +13,32 @@
  * /////
  * rfe.fireEvent('operationComplete');
  */
-Ext.define('HT.lib.operation.GeneProteinOperation', {
-	extend: 'HT.lib.operation.RuleOperation',
+Ext.define('HT.lib.operation.GeneCompoundOperation', {
+	// extend: 'Ext.util.Observable',
 	mixins: {
 		observable: 'Ext.util.Observable'
 	},
 
 	constructor: function (config) {
 		// this.initConfig(config);
+
+		this.evName = 'operationComplete';
+		this.alias = 'gene-compound-operation';
+		this.result = null;
+		this.threshold = null;
+
+		this.mixins.observable.constructor.call(this, config);
+		this.addEvents({
+			'operationCompleted': true
+		});
+
+		this.listeners = config.listeners;
 		this.callParent(arguments);
-		this.alias = 'gene-protein-operation';
+
 	},
 
 	/**
-	 * Query uniprot to see if the gene product is the target node.
+	 * From the gene name or symbol, get if interacts with target compound in any way
 	 * @param edgeSrc, the edge object for the source node
 	 * @param edgeTrg, the edge object for the target node
 	 * @param threshold, the value threshold
@@ -34,20 +46,15 @@ Ext.define('HT.lib.operation.GeneProteinOperation', {
 	 */
 	operation: function (edgeSrc, edgeTrg, threshold, funcObj) {
 		var me = this;
-		var accSrc = edgeSrc.payloadValue.acc;
-		var accTrg = edgeTrg.payloadValue.acc;
-		var genename = edgeSrc.label.split(',')[0].trim();
-		var url = 'http://localhost:3003/api/target/by_gene.jsonp?genename='+genename;
+		var payloadSrc = edgeSrc.payloadValue;
+		var payloadTrg = edgeTrg.payloadValue;
+		var url = 'http://localhost:3003/pharma/' + payloadSrc.acc + '/bioactivities.jsonp';
 
 		Ext.data.JsonP.request({
 			url: url,
-			params: {
-				threshold: (threshold === undefined || threshold == null)? 0.0: threshold
-			},
 
-			callback: function (opts, resp) {
-				console.log('ajax callback');
-			},
+//			callback: function (opts, resp) {
+//			},
 
 			failure: function (resp, opts) {
 				funcObj.result = -1;
@@ -57,31 +64,26 @@ Ext.define('HT.lib.operation.GeneProteinOperation', {
 				var jsonObj = resp;
 				var result = false;
 
-				// To evaluate the hypothesis, search an entry in uniprot for the gene
-				// and check if any of the accessions matches with the target accession
-				Ext.each(jsonObj.accessions, function (acc, index, accessions) {
-					var init = acc.indexOf('>');
-					var end = acc.lastIndexOf('<');
-					var acc = acc.substring(init+1, end);
+				var activityList = jsonObj.activities; // array of activities involving the protein
 
-					if (acc == accTrg) {
+				Ext.each(activityList, function (activity, index, activities) {
+					if (activity.ingredient_cmpd_chemblid == payloadTrg.chemblId) {
 						result = true;
 						return false;
 					}
 				});
 
-
 				funcObj.result = result;
 				var hypothesiseResult = result !== false;
 
-				var edgeId = 'e'+edgeSrc.id+'-'+edgeTrg.id;
-				console.log('Operation finished!!!: '+funcObj.result+' for '+edgeId);
+				var edgeId = 'e' + edgeSrc.id + '-' + edgeTrg.id;
+				console.log('Operation finished!!!: ' + funcObj.result + ' for ' + edgeId);
 
 				me.fireEvent('operationComplete', {result: funcObj.result, hypothesis: hypothesiseResult, edgeId: edgeId});
 			},
 
 			scope: me
-		})// EO JsonP request
+		})
 	}
 
 });

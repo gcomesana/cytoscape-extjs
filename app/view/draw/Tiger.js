@@ -1,5 +1,5 @@
 //Ext.create('Ext.draw.Component', {
-Ext.define('APP.view.draw.Tiger', {
+Ext.define('HT.view.draw.Tiger', {
 	extends: 'Ext.draw.Component',
 
 	width:400,

@@ -1,7 +1,7 @@
 /**
  * This is a container supporting the Flash implementation of cytoscape.
  */
-Ext.define('APP.view.cytoscape.CytoScape', {
+Ext.define('HT.view.cytoscape.CytoScape', {
 	extend: 'Ext.container.Container',
 	alias: 'widget.cytoscape',
 
@@ -84,7 +84,7 @@ Ext.define('APP.view.cytoscape.CytoScape', {
 				// THIS IS TO ADD AN EDGE JOINING THE NODES STRAIGHT AWAY
 				if (me.nodesSelectionModel.length == 2) {
 					// console.log('Adding edge and removing selected nodes');
-					var added = APP.lib.CytoscapeActions.createEdge(me.vis, me.nodesSelectionModel);
+					var added = HT.lib.CytoscapeActions.createEdge(me.vis, me.nodesSelectionModel);
 					if (added !== false) { // the edge was created
 						var node1Id = me.nodesSelectionModel[0].data.id,
 								node2Id = me.nodesSelectionModel[1].data.id;

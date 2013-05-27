@@ -3,7 +3,7 @@
  * Similar to Textbox button, but performing an search with autocomplete. Similar to
  * TDGUI.views.dropdowns.conceptwikiProteinLookup
  */
-Ext.define('APP.view.common.ComboLookupButton', {
+Ext.define('HT.view.common.ComboLookupButton', {
 	extend: 'Ext.container.Container',
 	alias: 'widget.combo-lookup-btn',
 

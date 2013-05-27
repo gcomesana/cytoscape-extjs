@@ -12,15 +12,15 @@
  If you are unsure which license is appropriate for your use, please contact the sales department at http://www.sencha.com/contact.
 
  */
-Ext.define('APP.view.Viewport', {
+Ext.define('HT.view.Viewport', {
 	extend:'Ext.container.Viewport',
 
 	requires:[
-//		'APP.view.Viewer',
-//		'APP.view.feed.List',
-		'APP.view.panels.ImageList',
-		'APP.view.panels.MainCenter',
-		'APP.view.panels.SouthPanel',
+//		'HT.view.Viewer',
+//		'HT.view.feed.List',
+		'HT.view.panels.ImageList',
+		'HT.view.panels.MainCenter',
+		'HT.view.panels.SouthPanel',
 		'Ext.layout.container.Border'
 	],
 

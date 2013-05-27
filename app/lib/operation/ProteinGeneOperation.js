@@ -13,8 +13,8 @@
  * /////
  * rfe.fireEvent('operationComplete');
  */
-Ext.define('APP.lib.operation.ProteinGeneOperation', {
-	extend: 'APP.lib.operation.RuleOperation',
+Ext.define('HT.lib.operation.ProteinGeneOperation', {
+	extend: 'HT.lib.operation.RuleOperation',
 	mixins: {
 		observable: 'Ext.util.Observable'
 	},

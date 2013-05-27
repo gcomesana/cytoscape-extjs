@@ -1,3 +1,4 @@
+
 /**
  * A custom event to fire every time a function in a rule is completed (as all
  * of them will be asynchronous).
@@ -13,7 +14,7 @@
  * /////
  * rfe.fireEvent('operationComplete');
  */
-Ext.define('HT.lib.operation.InteractionsRuleOperation', {
+Ext.define('HT.lib.operation.DiseaseGeneOperation', {
 	extend: 'HT.lib.operation.RuleOperation',
 	mixins: {
 		observable: 'Ext.util.Observable'
@@ -22,26 +23,12 @@ Ext.define('HT.lib.operation.InteractionsRuleOperation', {
 	constructor: function (config) {
 		// this.initConfig(config);
 		this.callParent(arguments);
-		this.alias = 'target-target-interactions';
-		/*
-		 this.evName = 'operationComplete';
-		 this.result = null;
-		 this.threshold = null;
-
-		 this.mixins.observable.constructor.call(this, config);
-		 this.addEvents({
-		 'operationCompleted': true
-		 }),
-
-		 this.listeners = config.listeners;
-		 this.callParent(arguments);
-		 */
-
+		this.alias = 'disease-gene-operation';
 	},
 
 	/**
-	 * Gets interactions and evaluates the result to provide a value to decide if
-	 * the two targets (in this particular case) interact each other
+	 * Starting out of a OMIMid for a disease/trait, make a request to get the gene_symbols for the disease/trati.
+	 * At least one of the gene should be in the target to assert the rule.
 	 * @param edgeSrc, the edge object for the source node
 	 * @param edgeTrg, the edge object for the target node
 	 * @param threshold, the value threshold
@@ -49,15 +36,13 @@ Ext.define('HT.lib.operation.InteractionsRuleOperation', {
 	 */
 	operation: function (edgeSrc, edgeTrg, threshold, funcObj) {
 		var me = this;
-		var accSrc = edgeSrc.payloadValue.acc;
-		var accTrg = edgeTrg.payloadValue.acc;
-		var url = 'http://localhost:3003/api/interactions/'+accSrc+'/'+accTrg+'.jsonp';
+		var payloadSrc = edgeSrc.payloadValue;
+		var payloadTrg = edgeTrg.payloadValue;
+		var genename = edgeSrc.label.split(',')[0].trim();
+		var url = 'http://localhost:3003/pharma/disease/genemap.json?mim_number='+edgeSrc.payloadValue.uuid; // OMIMid when entity = disease
 
 		Ext.data.JsonP.request({
 			url: url,
-			params: {
-				threshold: (threshold === undefined || threshold == null)? 0.0: threshold
-			},
 
 			callback: function (opts, resp) {
 				console.log('ajax callback');
@@ -67,19 +52,27 @@ Ext.define('HT.lib.operation.InteractionsRuleOperation', {
 				funcObj.result = -1;
 			},
 
+			// In this case, we just check if the gene names match
 			success: function (resp, opts) {
 				var jsonObj = resp;
-				var result;
-				var sumConfVal = 0;
-				if (jsonObj.totalCount > 0) {
-					Ext.each(jsonObj.interactions, function (inter, index, interactions) {
-						sumConfVal += inter.conf_value;
-					})
-					result = sumConfVal / jsonObj.totalCount;
-				}
+				var result = false;
 
-				funcObj.result = result === undefined? -1: result;
-				var hypothesiseResult = result !== undefined;
+				var geneList = jsonObj.genes; // an array of {mim_number, gene_symbol} objects
+				Ext.each(geneList, function (geneObj, index, genesItself) {
+					var genes = geneObj.gene_symbol.split(',');
+					Ext.each(genes, function (genename, indexBis, geneArr) {
+						// if a genename is in the genes list, then result is true
+						if (payloadTrg.genes.indexOf(genename) != -1) {
+							result = true;
+							return false;
+						}
+					});
+					if (result = true)
+						return false; // finish outer each loop
+				});
+				
+				funcObj.result = result;
+				var hypothesiseResult = result !== false;
 
 				var edgeId = 'e'+edgeSrc.id+'-'+edgeTrg.id;
 				console.log('Operation finished!!!: '+funcObj.result+' for '+edgeId);
