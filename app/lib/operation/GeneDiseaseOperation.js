@@ -14,7 +14,7 @@
  * /////
  * rfe.fireEvent('operationComplete');
  */
-Ext.define('HT.lib.operation.CompoundGeneOperation', {
+Ext.define('HT.lib.operation.GeneDiseaseOperation', {
 	// extend: 'Ext.util.Observable',
 	mixins: {
 		observable: 'Ext.util.Observable'
@@ -24,7 +24,7 @@ Ext.define('HT.lib.operation.CompoundGeneOperation', {
 		// this.initConfig(config);
 
 		this.evName = 'operationComplete';
-		this.alias = 'compound-gene-operation';
+		this.alias = 'gene-disease-operation';
 		this.result = null;
 		this.threshold = null;
 
@@ -47,15 +47,14 @@ Ext.define('HT.lib.operation.CompoundGeneOperation', {
 	 */
 	operation: function (edgeSrc, edgeTrg, threshold, funcObj) {
 		var me = this;
+		var diseaseName = edgeTrg.label;
 		var payloadSrc = edgeSrc.payloadValue;
 		var payloadTrg = edgeTrg.payloadValue;
-		var url = 'http://localhost:3003/pharma/compound/activities/' + payloadSrc.chemblId + '.jsonp';
+		var geneParam = payloadSrc.genes.split(',')[0];
+		var url = 'http://localhost:3003/pharma/gene/diseases.jsonp?ident=' + geneParam;
 
 		Ext.data.JsonP.request({
 			url: url,
-
-//			callback: function (opts, resp) {
-//			},
 
 			failure: function (resp, opts) {
 				funcObj.result = -1;
@@ -65,25 +64,9 @@ Ext.define('HT.lib.operation.CompoundGeneOperation', {
 				var jsonObj = resp;
 				var result = false;
 
-				var activityList = jsonObj.activities; // array of activities involving the protein
-
-				Ext.each(activityList, function (activity, index, activities) {
-					var activity_accesions = activity.target_accessions.split(',');
-					if (activity_accesions.indexOf(payloadTrg.acc) != -1) {
-						result = true;
-						return false;
-					}
-					/*
-					Ext.each(activity_accesions, function (accs, index, accs_list) {
-						if (payloadTrg.indexOf(accs) != -1) {
-							result = true;
-							return false;
-						}
-
-					});
-					return !result; // if result is false, continue, otherwise break the loop
-					*/
-				});
+				var diseaseList = jsonObj.diseases; // array of activities involving the protein
+				var result = (diseaseList.indexOf(diseaseName.toLowerCase()) != -1);
+				// result = related;
 
 				funcObj.result = result;
 				var hypothesiseResult = result !== false;

@@ -71,10 +71,13 @@ Ext.define('HT.lib.RuleFunctions', (function () {
 	var diseaseGeneOp = Ext.create('HT.lib.operation.DiseaseGeneOperation', {});
 	var diseaseProteinOp = Ext.create('HT.lib.operation.DiseaseProteinOperation', {});
 	var geneCompoundOp = Ext.create('HT.lib.operation.GeneCompoundOperation', {});
+	var compoundGeneOp = Ext.create('HT.lib.operation.CompoundGeneOperation', {});
+	var geneDiseaseOp = Ext.create('HT.lib.operation.GeneDiseaseOperation', {});
 
 
 	var operationStore = [interactionOp, geneProteinOp, proteinGeneOp,
-				diseaseGeneOp, diseaseProteinOp, geneCompoundOp]; // Actual logic for rule operations come from here!!!!
+				diseaseGeneOp, diseaseProteinOp, geneDiseaseOp,
+				geneCompoundOp, compoundGeneOp]; // Actual logic for rule operations come from here!!!!
 
 	var notImplementedYet = function (valSrc, valTrg, threshold, funcObj) {
 		console.error('Not implemented yet...');
@@ -180,12 +183,12 @@ Ext.define('HT.lib.RuleFunctions', (function () {
 								aliasObj.alias = 'gene-compound-operation';
 								aliasArray.push(aliasObj);
 								break;
-							/*
+
 							case HT.lib.CytoscapeActions.DISEASE:
 								aliasObj.alias = 'gene-disease-operation';
 								aliasArray.push(aliasObj);
 								break;
-							*/
+
 							default:
 								aliasObj.alias = 'gene-protein-operation';
 								aliasArray.push(aliasObj);
