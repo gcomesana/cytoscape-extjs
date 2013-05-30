@@ -64,7 +64,7 @@ Ext.define('HT.lib.RuleFunctions', (function () {
 // TODO functions should be kept in a store, with members result, threshold, result, func
 //	var ruleFunctionsStore = [interactionFunc];
 
-
+	// private vars
 	var interactionOp = Ext.create('HT.lib.operation.InteractionsRuleOperation', {});
 	var geneProteinOp = Ext.create('HT.lib.operation.GeneProteinOperation', {});
 	var proteinGeneOp = Ext.create('HT.lib.operation.ProteinGeneOperation', {});
@@ -78,12 +78,6 @@ Ext.define('HT.lib.RuleFunctions', (function () {
 	var operationStore = [interactionOp, geneProteinOp, proteinGeneOp,
 				diseaseGeneOp, diseaseProteinOp, geneDiseaseOp,
 				geneCompoundOp, compoundGeneOp]; // Actual logic for rule operations come from here!!!!
-
-	var notImplementedYet = function (valSrc, valTrg, threshold, funcObj) {
-		console.error('Not implemented yet...');
-
-		return -1;
-	};
 
 
 	return {

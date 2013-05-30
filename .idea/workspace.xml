@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/DiseaseGeneOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/DiseaseGeneOperation.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app-test/specs/UtilTest.js" afterPath="$PROJECT_DIR$/app-test/specs/AjaxConcurrencyTest.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/RuleFunctions.js" afterPath="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-test.js" afterPath="$PROJECT_DIR$/app-test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test-runner.html" afterPath="$PROJECT_DIR$/test-runner.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="skelapp.iws" />
@@ -25,12 +26,12 @@
     <file path="/CytoscapeActions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369047107486" ignored="false" />
     <file path="/app.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369647529875" ignored="false" />
     <file path="/DrawingCanvas.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1364803462515" ignored="false" />
-    <file path="/a.dummy" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369647548273" ignored="false" />
+    <file path="/a.dummy" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369841122094" ignored="false" />
     <file path="/ImageList.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1364808875851" ignored="false" />
     <file path="/EntityLookup.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368542682392" ignored="false" />
     <file path="/HypothesisRunner" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1365005208278" ignored="false" />
-    <file path="/test-runner.html" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368098284576" ignored="false" />
-    <file path="/app-test.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368098110066" ignored="false" />
+    <file path="/test-runner.html" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369849112933" ignored="false" />
+    <file path="/app-test.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369848943964" ignored="false" />
     <file path="/HypothesisRunnerTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366294451820" ignored="false" />
     <file path="/HypothesisRunner.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368098941574" ignored="false" />
     <file path="/Util.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366121497034" ignored="false" />
@@ -42,7 +43,7 @@
     <file path="/EdgeRuleFactoryTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366278957676" ignored="false" />
     <file path="/CytoscapeActionsTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366379133891" ignored="false" />
     <file path="/RuleFunctionEvent.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366378370372" ignored="false" />
-    <file path="/Dummy.txt" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369750313152" ignored="false" />
+    <file path="/Dummy.txt" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369902118454" ignored="false" />
     <file path="/ComboLookupButton.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368699168223" ignored="false" />
     <file path="/CWEntries.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368098708645" ignored="false" />
     <file path="/StoresTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368110834244" ignored="false" />
@@ -52,6 +53,8 @@
     <file path="/DiseaseGeneOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369647885698" ignored="false" />
     <file path="/GeneCompoundOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369653887543" ignored="false" />
     <file path="/CompoundGeneOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369739302269" ignored="false" />
+    <file path="/ConcurrentBarrierResponse.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369842818970" ignored="false" />
+    <file path="/AjaxConcurrencyTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369904217988" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +95,7 @@
       <file leaf-file-name="RuleFunctions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="191" column="0" selection-start="6082" selection-end="6082" vertical-scroll-proportion="0.0">
+            <state line="81" column="0" selection-start="2941" selection-end="2941" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -107,24 +110,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneDiseaseOperation.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js">
+      <file leaf-file-name="AjaxConcurrencyTest.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app-test/specs/AjaxConcurrencyTest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="0" selection-start="1745" selection-end="1745" vertical-scroll-proportion="0.49885058">
-              <folding>
-                <element signature="e#1#343#0" expanded="false" />
-              </folding>
+            <state line="74" column="12" selection-start="2445" selection-end="2445" vertical-scroll-proportion="0.53519416">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComboLookupButton.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/common/ComboLookupButton.js">
+      <file leaf-file-name="DiseaseCompoundOperation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseCompoundOperation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1369647581000" expanded="false" signature="2540:2575" placeholder="..." />
-              </folding>
+            <state line="82" column="6" selection-start="1642" selection-end="2365" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuleFunctionsTest.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app-test/specs/RuleFunctionsTest.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="7" selection-start="1" selection-end="1134" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EdgeRule.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/EdgeRule.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="76" column="21" selection-start="2262" selection-end="2262" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -148,11 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/lib/EdgeRuleFactory.js" />
-        <option value="$PROJECT_DIR$/app/lib/operation/RuleOperation.js" />
-        <option value="$PROJECT_DIR$/app/lib/operation/InteractionsRuleOperation.js" />
-        <option value="$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js" />
-        <option value="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
         <option value="$PROJECT_DIR$/app/lib/operation/ProteinGeneOperation.js" />
         <option value="$PROJECT_DIR$/app/view/common/EntityLookup.js" />
         <option value="$PROJECT_DIR$/app/controller/Panels.js" />
@@ -164,6 +176,11 @@
         <option value="$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js" />
         <option value="$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js" />
         <option value="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
+        <option value="$PROJECT_DIR$/app/lib/ConcurrentBarrierResponse.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/DiseaseCompoundOperation.js" />
+        <option value="$PROJECT_DIR$/test-runner.html" />
+        <option value="$PROJECT_DIR$/app-test.js" />
+        <option value="$PROJECT_DIR$/app-test/specs/AjaxConcurrencyTest.js" />
       </list>
     </option>
   </component>
@@ -262,6 +279,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cytoapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skelapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cytoapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skelapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cytoapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="specs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -374,32 +423,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skelapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cytoapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="operation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -550,7 +573,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19226637" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22751322" sideWeight="0.7922912" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28117913" sideWeight="0.7922912" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.266062" sideWeight="0.7922912" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19319429" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -628,55 +651,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/view/common/EntityLookup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="64" selection-start="2831" selection-end="2831" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="30" selection-start="1974" selection-end="1974" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/HypothesisRunner.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="27" selection-start="28" selection-end="28" vertical-scroll-proportion="0.016528925" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/Articles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="12" selection-start="649" selection-end="649" vertical-scroll-proportion="-0.5073613" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/Viewport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="10" selection-start="739" selection-end="739" vertical-scroll-proportion="0.12873563" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/operation/RuleOperation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="30" selection-start="0" selection-end="2308" vertical-scroll-proportion="0.19417475">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="19" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneCompoundOperation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="0" selection-start="0" selection-end="2326" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -688,9 +665,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="12" selection-start="0" selection-end="2719" vertical-scroll-proportion="0.71034485">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/common/ComboLookupButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="0" selection-start="2941" selection-end="2941" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/EdgeRule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="21" selection-start="2262" selection-end="2262" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseGeneOperation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="65" selection-start="1345" selection-end="1345" vertical-scroll-proportion="0.0">
+        <state line="41" column="65" selection-start="1345" selection-end="1345" vertical-scroll-proportion="0.25619835">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneCompoundOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="10" selection-start="1532" selection-end="1532" vertical-scroll-proportion="0.3553719">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="4" selection-start="860" selection-end="860" vertical-scroll-proportion="0.1632184">
           <folding />
         </state>
       </provider>
@@ -702,35 +719,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js">
+    <entry file="file://$PROJECT_DIR$/app-test/specs/RuleFunctionsTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="12" selection-start="0" selection-end="2719" vertical-scroll-proportion="0.71034485">
+        <state line="36" column="7" selection-start="1" selection-end="1134" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
+    <entry file="file://$PROJECT_DIR$/app-test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="191" column="0" selection-start="6082" selection-end="6082" vertical-scroll-proportion="0.0">
+        <state line="17" column="50" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/ConcurrentBarrierResponse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="4" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.7311828" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseCompoundOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="6" selection-start="1642" selection-end="2365" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/common/ComboLookupButton.js">
+    <entry file="file://$PROJECT_DIR$/test-runner.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1369647581000" expanded="false" signature="2540:2575" placeholder="..." />
-          </folding>
+        <state line="20" column="4" selection-start="952" selection-end="952" vertical-scroll-proportion="0.3398058">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js">
+    <entry file="file://$PROJECT_DIR$/app-test/specs/AjaxConcurrencyTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="1745" selection-end="1745" vertical-scroll-proportion="0.49885058">
-          <folding>
-            <element signature="e#1#343#0" expanded="false" />
-          </folding>
+        <state line="74" column="12" selection-start="2445" selection-end="2445" vertical-scroll-proportion="0.53519416">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -9,13 +9,13 @@ var Application = null;
 
 Ext.onReady(function() {
 	Application = Ext.create('Ext.app.Application', {
-		name: 'APP',
+		name: 'HT',
 		paths: {
-			'APP': 'app'
+			'HT': 'app'
 		},
-		requires: ['APP.lib.HypothesisRunner', 'APP.lib.Util',
-			'APP.lib.EdgeRule', 'APP.lib.EdgeRuleFactory', 'APP.lib.RuleOperation',
-			'APP.lib.RuleFunctions', 'APP.store.CWEntries'],
+		requires: ['HT.lib.HypothesisRunner', 'HT.lib.Util',
+			'HT.lib.EdgeRule', 'HT.lib.EdgeRuleFactory', 'HT.lib.operation.RuleOperation',
+			'HT.lib.RuleFunctions', 'HT.store.CWEntries'],
 
 		controllers: [
 			'Panels'
