@@ -59,8 +59,8 @@ Ext.define('HT.controller.Panels', {
 	},
 
 	/**
-	 * Callback for the event when clicking a button in a textbox-btn component
-	 * contained in a entity-lookup widget
+	 * Callback for the event when clicking a button in a textbox-btn component.
+	 * contained in a entity-lookup widget. Main function is adding a node
 	 * @param comp, a textbox-btn widget
 	 * @param evOpts the event options like: {id, label, meta, value}
 	 */
@@ -89,8 +89,8 @@ Ext.define('HT.controller.Panels', {
 				var startIndex = evOpts.label.indexOf('(');
 				var endIndex = evOpts.label.indexOf(')');
 				nodeLabel = evOpts.label.substring(startIndex+1, endIndex);
-				var labelArray = nodeLabel.split(' ');
-				nodeLabel = labelArray.join(', ');
+				// var labelArray = nodeLabel.split(' ');
+				// nodeLabel = labelArray.join(', ');
 
 				theUrl = "http://lady-qu.cnio.es:3003/api/target/by_gene.jsonp?genename=";
 				var genename = nodeLabel.split(',')[0].trim();
@@ -122,24 +122,11 @@ Ext.define('HT.controller.Panels', {
 				// entity: HT.lib.CytoscapeActions.shape2entity[shape], // this is a Number
 				// entity: entityWidget.shape2entity[shape],
 				entity: evOpts.meta,
+				tags: evOpts.match,
 				payloadValue: evOpts.value
 			};
 
 
-			/*
-			 if (evOpts.meta == "protein")
-			 theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
-
-			 else if (evOpts.meta == 'gene') {
-			 theUrl = "http://lady-qu.cnio.es:3003/api/target/by_gene.jsonp?genename=";
-			 var genename = nodeLabel.split(',')[0].trim();
-			 theUrl += genename;
-			 }
-
-			 else
-			 // HT.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
-			 theUrl = "http://lady-qu.cnio.es:3003/api/target/byname/"+evOpts.label+".jsonp";
-			 */
 			Ext.data.JsonP.request({
 				url: theUrl,
 
@@ -157,14 +144,35 @@ Ext.define('HT.controller.Panels', {
 					var getNodeOpts = function () {
 						// nodeOpts, jsonObj is a free variable
 						var payload = {};
-						if (jsonObj.accessions !== undefined && jsonObj.accessions != null) { // uniprot response on proteinInfo
+						// for omim response, so far we check for presence of accessions and genes
+						//if ((jsonObj.genes != null && jsonObj.genes.length > 0) &&
+							//	(jsonObj.accessions !== undefined && jsonObj.accessions != null)) {
+						if (evOpts.meta == 'disease') {
+							// check the object to see whether or not include the list of genes
+							payload = {
+								uuid: jsonObj.genes[0].mim_number,
+								acc: jsonObj.accessions, // comma-separated list of accessions from OMIM
+								chemblId: null,
+								genes: jsonObj.genes[0].gene_symbol,
+								chemSpiderId: null
+							}
+						}
+
+						else if (jsonObj.accessions !== undefined && jsonObj.accessions != null) { // uniprot response on proteinInfo
 							var uniprotUrl = jsonObj.accessions[0];
 							var initIdx = uniprotUrl.indexOf('>');
 							var endIdx = uniprotUrl.indexOf('<', initIdx);
 							var acc = uniprotUrl.substring(initIdx+1, endIdx);
-							var genes = null;
+							var genes = '';
 							if (jsonObj.genes != null && jsonObj.genes.length > 0)
 								genes = jsonObj.genes.join(',');
+
+							if (jsonObj.allgenes != null && jsonObj.allgenes.length > 0) {
+								Ext.each(jsonObj.allgenes, function (gene, index, allgenes) {
+									genes += gene.name + ",";
+								});
+								genes = genes.substring(0, genes.length-1);
+							}
 
 							payload = {
 								uuid: evOpts.value, // when gene, here will be literal -> acc|gene id list
@@ -174,17 +182,9 @@ Ext.define('HT.controller.Panels', {
 								chemSpiderId: null
 							}
 						}
-						else if (jsonObj.genes != null && jsonObj.genes.length > 0) { // for omim response
-							// check the object to see whether or not include the list of genes
-							payload = {
-								uuid: jsonObj.genes[0].mim_number,
-								acc: jsonObj.genes[0].gene_symbol,
-								chemblId: null,
-								genes: null,
-								chemSpiderId: null
-							}
-						}
-						else if (jsonObj.result._about.match(/compound/) != null) { // compound info requested
+
+						// else if (jsonObj.result._about.match(/compound/) != null) { // compound info requested
+						else if (evOpts.meta.match(/compound/) != null) {
 							var conceptUri = jsonObj.result.primaryTopic._about;
 							var uuid = conceptUri.substring(conceptUri.lastIndexOf('/')+1, conceptUri.length);
 							var matches = jsonObj.result.primaryTopic.exactMatch;
@@ -214,15 +214,28 @@ Ext.define('HT.controller.Panels', {
 					if (jsonObj != null)
 						getNodeOpts();
 					else
-						nodeOpts = nodeLabel;
+						nodeOpts.label = nodeLabel;
 
-					HT.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
+					var nodeOptsType = Object.prototype.toString.call(nodeOpts.payloadValue).match(/\s([a-zA-Z]+)/)[1];
+					if (nodeOptsType == 'Object')
+						HT.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
+
+					else {
+						Ext.Msg.show({
+							title: 'Warning!',
+							msg: "No data found for '"+nodeOpts.label+"'",
+							width: 300,
+							buttons: Ext.MessageBox.OK,
+							icon: Ext.MessageBox.WARNING
+						})
+					}
+
 				} // EO success
 
 			}) // EO JSONP req
 
-	//		vis.addNode(20, 20, nodeOpts);
 		}, // EO onClickTextbox
+
 
 
 	onRunGraph: function (comp, evOpts) {

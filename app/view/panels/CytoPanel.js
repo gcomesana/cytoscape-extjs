@@ -14,6 +14,9 @@ var graphModel = {
 		}, {
 			name: 'entity',
 			type: 'string' // type: 'number'
+		}, {
+			name: 'tags', // comma-separated match terms, like tags here
+			type: 'string'
 		}],
 
 		edges: [{
@@ -239,6 +242,64 @@ Ext.define('HT.view.panels.CytoPanel', {
 			}
 		}, {
 			xtype: 'container',
+			// border: false,
+			margin: '20 0 0 0',
+			style: {
+				marginTop: 20,
+				borderTopWidth: '1px',
+				borderTopColor: 'black',
+				borderTop: true
+				// backgroundColor: 'yellow'
+			},
+
+			// layout: 'column',
+			layout: {
+        type: 'hbox',
+        padding:'10',
+        pack:'end'
+        // align:'middle'
+      },
+			width: '100%',
+			defaults: {
+				margin: '0 2 0 0'
+			},
+			items: [{
+				xtype: 'button',
+				text: 'Enact',
+
+				id: 'btnEnact'
+			}, {
+				xtype: 'button',
+				text: 'Enact selected',
+
+				id: 'btnEnactSel'
+			}, {
+				xtype: 'button',
+				text: 'Reset text',
+				margin: '0 2 0 10',
+
+				id: 'btnReset',
+				handler: function (btn, evOpts) {
+					console.log('clicked reset: id: '+btn.getId());
+					var items = this.up().up().items.items;
+					Ext.each(items, function (item, index, itemList) {
+						if (item.xtype == 'entity-lookup')
+							item.items.items[1].items.items[0].reset(); // reset the combo!!
+					});
+				}
+			}, {
+				xtype: 'button',
+				text: 'Clear graph',
+
+				id: 'btnClear',
+				handler: function (btn, evOpts) {
+					var cytoscape = this.up('viewport').down('cytoscape');
+					cytoscape.vis.removeElements();
+					console.log('handler for btn: '+btn.getId()+' and cyto: '+cytoscape.getId());
+				}
+			}]
+
+/*
 			style: {
 				marginTop: 20,
 				backgroundColor: 'yellow'
@@ -255,9 +316,9 @@ Ext.define('HT.view.panels.CytoPanel', {
 
 					id: 'btnEnact'
 				}]
-				/*style: {
+				*style: {
 					marginLeft: 15
-				} */
+				} *
 			}, {
 				columnWidth: 0.3,
 				items: [{
@@ -272,6 +333,11 @@ Ext.define('HT.view.panels.CytoPanel', {
 				text: 'result: labelresult',
 				margin: '0 0 0 10'
 			}]
+			*/
+
+
+
+
 		} // EO container
 		] // EO UPPER container items
 

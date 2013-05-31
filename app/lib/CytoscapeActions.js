@@ -95,6 +95,22 @@ Ext.define('HT.lib.CytoscapeActions', {
 		 * target objects as delivered by the Event object and stored in the selectionModel
 		 */
 		createEdge: function (vis, nodes) {
+			var entitySrc = nodes[0].data.entity, entityTrg = nodes[1].data.entity;
+
+			if ((entitySrc == 'disease' && entityTrg == 'disease') ||
+					(entitySrc == 'compound' && entityTrg == 'compound') ||
+					(entitySrc == 'gene' && entityTrg == 'gene')) {
+				Ext.Msg.show({
+					title: 'Relationship warning',
+					msg: "Relationship <b>"+entitySrc+"-"+entityTrg+ "</b> not suitable",
+					width: 350,
+					buttons: Ext.MessageBox.OK,
+					icon: Ext.MessageBox.WARNING
+				});
+				return;
+			}
+
+
 			var edges = vis.edges().length;
 			var nodeOneId = nodes[0].data.id, nodeTwoId = nodes[1].data.id;
 			var newEdge = undefined;

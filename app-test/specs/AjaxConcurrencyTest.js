@@ -40,11 +40,15 @@ describe('Getting rule object', function () {
 
 		it ('should make simultaneous ajax calls', function () {
 			var accs = 'Q96BI1,Q9BX63,P38398,P42336,O60934,O96017,P51587,Q06609,O43542,P31749,Q86YC2';
+			accs = "Q8N608,Q8N138,Q9BZ11,Q13093,Q8TAX7"; // asthma
+			accs = 'Q8N608,Q13093,P36222,Q9BZ11,Q9Y616,Q8TAX7,Q6W5P4,Q8N138,Q13258,Q9UL17';
+
 			var accs_arr = accs.split(',');
 			var numReqs = accs_arr.length;
 			var countReqs = 0;
 			var data = [];
-			var cmpdChemblId = 'CHEMBL83'
+			var cmpdChemblId = 'CHEMBL786';
+			cmpdChemblId = 'CHEMBL714'; // salbutamol
 
 			// with the accessions for the disease and the compounds for each assay,
 			// we have to see whether or not the compound is in the assays

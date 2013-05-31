@@ -50,7 +50,8 @@ Ext.define('HT.lib.operation.GeneDiseaseOperation', {
 		var diseaseName = edgeTrg.label;
 		var payloadSrc = edgeSrc.payloadValue;
 		var payloadTrg = edgeTrg.payloadValue;
-		var geneParam = payloadSrc.genes.split(',')[0];
+		// var geneParam = payloadSrc.genes.split(',')[0];
+		var geneParam = edgeSrc.label.split(',')[0]; // first gene on label
 		var url = 'http://localhost:3003/pharma/gene/diseases.jsonp?ident=' + geneParam;
 
 		Ext.data.JsonP.request({
@@ -63,12 +64,26 @@ Ext.define('HT.lib.operation.GeneDiseaseOperation', {
 			success: function (resp, opts) {
 				var jsonObj = resp;
 				var result = false;
+				var positiveCount = 0;
 
 				var diseaseList = jsonObj.diseases; // array of activities involving the protein
-				var result = (diseaseList.indexOf(diseaseName.toLowerCase()) != -1);
+				var diseaseTrgTags = edgeTrg.tags.split(',');
+				Ext.each(diseaseList, function (disease, index, diseases) {
+
+					Ext.each(diseaseTrgTags, function (tag, index, tagList) {
+						if (tag !== '' && disease.indexOf(tag) != -1) {
+							positiveCount++;
+							result = result || true;
+						}
+					})
+				});
+
+				funcObj.result = positiveCount;
+
+				// var result = (diseaseList.indexOf(diseaseName.toLowerCase()) != -1);
 				// result = related;
 
-				funcObj.result = result;
+				// funcObj.result = result;
 				var hypothesiseResult = result !== false;
 
 				var edgeId = 'e' + edgeSrc.id + '-' + edgeTrg.id;
