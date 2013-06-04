@@ -45,10 +45,10 @@ Ext.define('HT.controller.Panels', {
 				click: this.onClickTextbox
 			},
 //			'cytopanel > container > container > container > button': {
-			'button#btnEnact': {
+			'#btnEnact': {
 				click: this.onRunGraph
 			},
-			'button#btnEnactSel': {
+			'#btnEnactSel': {
 				click: this.onRunGraph
 			},
 			'cytopanel > container > textbox-btn#txtBtnDisease > button': {
@@ -81,6 +81,8 @@ Ext.define('HT.controller.Panels', {
 				newId = vis.nodes().length+i;
 				existsNode = vis.node(newId);
 			}
+
+			cytoscape.setLoading(true);
 
 			// OUR NODE definition and the endpoint to get info on the selected 'thing'!!!
 			var nodeLabel = '';
@@ -217,17 +219,21 @@ Ext.define('HT.controller.Panels', {
 						nodeOpts.label = nodeLabel;
 
 					var nodeOptsType = Object.prototype.toString.call(nodeOpts.payloadValue).match(/\s([a-zA-Z]+)/)[1];
-					if (nodeOptsType == 'Object')
+					if (nodeOptsType == 'Object') {
 						HT.lib.CytoscapeActions.createNode(cytoscape.vis, nodeOpts);
-
+						cytoscape.setLoading(false);
+					}
 					else {
 						Ext.Msg.show({
 							title: 'Warning!',
 							msg: "No data found for '"+nodeOpts.label+"'",
 							width: 300,
 							buttons: Ext.MessageBox.OK,
-							icon: Ext.MessageBox.WARNING
-						})
+							icon: Ext.MessageBox.WARNING,
+							fn: function (btnId, text, evOpts) {
+								cytoscape.setLoading(false);
+							}
+						});
 					}
 
 				} // EO success
@@ -239,7 +245,7 @@ Ext.define('HT.controller.Panels', {
 
 
 	onRunGraph: function (comp, evOpts) {
-		console.log('Panels.onRunGraph: got value '+evOpts.value+' for '+evOpts.meta);
+		// console.log('Panels.onRunGraph: got value '+evOpts.value+' for '+evOpts.meta);
 		var btnId = comp.getId();
 		var cytoscape = this.getCytoscape();
 		var vis = cytoscape.vis;

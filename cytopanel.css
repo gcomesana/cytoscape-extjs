@@ -1,0 +1,10 @@
+
+.msg-panel {
+	width: 98%;
+	background-color: lightgrey;
+	margin-top: 20px;
+}
+
+.msg-panel-content {
+	padding: 2px 2px 2px 2px;
+}

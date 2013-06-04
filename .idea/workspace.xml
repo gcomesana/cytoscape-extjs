@@ -2,27 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-test/specs/AjaxConcurrencyTest.js" afterPath="$PROJECT_DIR$/app-test/specs/AjaxConcurrencyTest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/common/ComboLookupButton.js" afterPath="$PROJECT_DIR$/app/view/common/ComboLookupButton.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/panels/CytoPanel.js" afterPath="$PROJECT_DIR$/app/view/panels/CytoPanel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/CytoscapeActions.js" afterPath="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/DiseaseCompoundOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/DiseaseCompoundOperation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/DiseaseGeneOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/DiseaseGeneOperation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/common/EntityLookup.js" afterPath="$PROJECT_DIR$/app/view/common/EntityLookup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/GeneCompoundOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/GeneCompoundOperation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/InteractionsRuleOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/InteractionsRuleOperation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/Panels.js" afterPath="$PROJECT_DIR$/app/controller/Panels.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/ProteinDiseaseOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/ProteinDiseaseOperation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/operation/ProteinGeneOperation.js" afterPath="$PROJECT_DIR$/app/lib/operation/ProteinGeneOperation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/RuleFunctions.js" afterPath="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="skelapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/onreadydefine.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363783610262" ignored="false" />
     <file path="/a.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363955452125" ignored="false" />
-    <file path="/index.html" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368176201340" ignored="false" />
-    <file path="/CytoPanel.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370005338483" ignored="false" />
+    <file path="/index.html" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370343157823" ignored="false" />
+    <file path="/CytoPanel.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370359153865" ignored="false" />
     <file path="/MainCenter.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363784386394" ignored="false" />
-    <file path="/Panels.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370007324894" ignored="false" />
+    <file path="/Panels.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370251715810" ignored="false" />
     <file path="/CytoScape.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366734968742" ignored="false" />
     <file path="/TextboxButton.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368094198178" ignored="false" />
     <file path="/a.css" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363955334131" ignored="false" />
@@ -30,7 +34,7 @@
     <file path="/a.coffee" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363955457644" ignored="false" />
     <file path="/a.xml" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363955484641" ignored="false" />
     <file path="/CytoscapeControls.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1363964002283" ignored="false" />
-    <file path="/CytoscapeActions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369923145709" ignored="false" />
+    <file path="/CytoscapeActions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370345874193" ignored="false" />
     <file path="/app.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369647529875" ignored="false" />
     <file path="/DrawingCanvas.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1364803462515" ignored="false" />
     <file path="/a.dummy" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369927262991" ignored="false" />
@@ -44,29 +48,31 @@
     <file path="/Util.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366121497034" ignored="false" />
     <file path="/EdgeRule.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366210861002" ignored="false" />
     <file path="/EdgeRuleFactory.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366213943487" ignored="false" />
-    <file path="/RuleFunctions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369927991858" ignored="false" />
+    <file path="/RuleFunctions.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370259509798" ignored="false" />
     <file path="/RuleFunctionsTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366278318881" ignored="false" />
     <file path="/EdgeRuleTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366105170565" ignored="false" />
     <file path="/EdgeRuleFactoryTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366278957676" ignored="false" />
     <file path="/CytoscapeActionsTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366379133891" ignored="false" />
     <file path="/RuleFunctionEvent.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1366378370372" ignored="false" />
-    <file path="/Dummy.txt" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369996720825" ignored="false" />
+    <file path="/Dummy.txt" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370336173121" ignored="false" />
     <file path="/ComboLookupButton.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369991174181" ignored="false" />
     <file path="/CWEntries.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368098708645" ignored="false" />
     <file path="/StoresTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368110834244" ignored="false" />
     <file path="/RuleOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1368704224837" ignored="false" />
-    <file path="/GeneProteinOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369044924335" ignored="false" />
-    <file path="/ProteinGeneOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369050600985" ignored="false" />
-    <file path="/DiseaseGeneOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369647885698" ignored="false" />
-    <file path="/GeneCompoundOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369653887543" ignored="false" />
-    <file path="/CompoundGeneOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369739302269" ignored="false" />
+    <file path="/GeneProteinOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370359432055" ignored="false" />
+    <file path="/ProteinGeneOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370356640291" ignored="false" />
+    <file path="/DiseaseGeneOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370347931155" ignored="false" />
+    <file path="/GeneCompoundOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370353870750" ignored="false" />
+    <file path="/CompoundGeneOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370346499774" ignored="false" />
     <file path="/ConcurrentBarrierResponse.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369842818970" ignored="false" />
     <file path="/AjaxConcurrencyTest.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369910822566" ignored="false" />
-    <file path="/DiseaseCompoundOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369913011504" ignored="false" />
-    <file path="/InteractionsRuleOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1369927368099" ignored="false" />
-    <file path="/ProteinDiseaseOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370005474924" ignored="false" />
-    <file path="/GeneDiseaseOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370005483585" ignored="false" />
+    <file path="/DiseaseCompoundOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370347196073" ignored="false" />
+    <file path="/InteractionsRuleOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370355739306" ignored="false" />
+    <file path="/ProteinDiseaseOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370358989294" ignored="false" />
+    <file path="/GeneDiseaseOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370354611208" ignored="false" />
     <file path="/DiseaseProteinOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370007922658" ignored="false" />
+    <file path="/cytopanel.css" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370346028528" ignored="false" />
+    <file path="/CompoundProteinOperation.js" changelist="1a5a4e12-b0ee-4d6c-b9a6-15fb11f2d423" time="1370346609167" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,10 +92,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RuleFunctions.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
+      <file leaf-file-name="ComboLookupButton.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/common/ComboLookupButton.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="49" selection-start="5609" selection-end="5609" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1369991333000" expanded="false" signature="2653:2688" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DiseaseCompoundOperation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseCompoundOperation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="95" column="36" selection-start="3386" selection-end="3386" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1370347213000" expanded="true" signature="3094:3112" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneCompoundOperation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneCompoundOperation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="86" column="62" selection-start="2611" selection-end="2611" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1370353921000" expanded="false" signature="2259:2277" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneProteinOperation.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="77" column="58" selection-start="2282" selection-end="2282" vertical-scroll-proportion="0.6589525">
+              <folding>
+                <marker date="1370359432000" expanded="true" signature="2257:2275" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CytoscapeActions.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="207" column="0" selection-start="5560" selection-end="5560" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -98,38 +148,29 @@
       <file leaf-file-name="CytoPanel.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/panels/CytoPanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="296" column="41" selection-start="5849" selection-end="5849" vertical-scroll-proportion="0.0">
+            <state line="307" column="54" selection-start="6075" selection-end="6075" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1370005339000" expanded="false" signature="3291:3345" placeholder="..." />
+                <marker date="1370359156000" expanded="false" signature="3334:3388" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CytoScape.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/cytoscape/CytoScape.js">
+      <file leaf-file-name="ProteinGeneOperation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/operation/ProteinGeneOperation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="35" selection-start="1802" selection-end="1802" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1370356658000" expanded="false" signature="2215:2233" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuleFunctions.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1369647581000" expanded="false" signature="4663:4698" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Panels.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="28" selection-start="5103" selection-end="5103" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DiseaseProteinOperation.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="27" selection-start="1718" selection-end="1718" vertical-scroll-proportion="0.49271846">
               <folding />
             </state>
           </provider>
@@ -138,8 +179,11 @@
       <file leaf-file-name="GeneDiseaseOperation.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="37" selection-start="2239" selection-end="2239" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="96" column="89" selection-start="2961" selection-end="2961" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1370359005000" expanded="true" signature="2669:2687" placeholder="..." />
+                <marker date="1370359005000" expanded="true" signature="2903:2922" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,28 +191,11 @@
       <file leaf-file-name="ProteinDiseaseOperation.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/lib/operation/ProteinDiseaseOperation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="29" selection-start="2218" selection-end="2218" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ComboLookupButton.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/common/ComboLookupButton.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="51" selection-start="3085" selection-end="3085" vertical-scroll-proportion="0.0">
+            <state line="85" column="89" selection-start="2706" selection-end="2787" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1369991333000" expanded="false" signature="2653:2688" placeholder="..." />
+                <marker date="1370359005000" expanded="false" signature="2489:2507" placeholder="..." />
+                <marker date="1370359005000" expanded="true" signature="2729:2748" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntityLookup.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/common/EntityLookup.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="13" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -192,22 +219,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js" />
-        <option value="$PROJECT_DIR$/app/lib/ConcurrentBarrierResponse.js" />
-        <option value="$PROJECT_DIR$/test-runner.html" />
-        <option value="$PROJECT_DIR$/app-test.js" />
-        <option value="$PROJECT_DIR$/app-test/specs/AjaxConcurrencyTest.js" />
-        <option value="$PROJECT_DIR$/app/lib/operation/DiseaseCompoundOperation.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/cytopanel.css" />
+        <option value="$PROJECT_DIR$/app/controller/Panels.js" />
         <option value="$PROJECT_DIR$/app/lib/CytoscapeActions.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/CompoundProteinOperation.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/DiseaseCompoundOperation.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/DiseaseGeneOperation.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/GeneCompoundOperation.js" />
         <option value="$PROJECT_DIR$/app/lib/operation/InteractionsRuleOperation.js" />
-        <option value="$PROJECT_DIR$/app/view/common/EntityLookup.js" />
-        <option value="$PROJECT_DIR$/app/view/common/ComboLookupButton.js" />
-        <option value="$PROJECT_DIR$/app/lib/RuleFunctions.js" />
-        <option value="$PROJECT_DIR$/app/view/panels/CytoPanel.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/ProteinGeneOperation.js" />
         <option value="$PROJECT_DIR$/app/lib/operation/ProteinDiseaseOperation.js" />
         <option value="$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js" />
-        <option value="$PROJECT_DIR$/app/controller/Panels.js" />
-        <option value="$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js" />
+        <option value="$PROJECT_DIR$/app/view/panels/CytoPanel.js" />
+        <option value="$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js" />
       </list>
     </option>
   </component>
@@ -215,7 +242,7 @@
     <option name="x" value="41" />
     <option name="y" value="22" />
     <option name="width" value="1369" />
-    <option name="height" value="1031" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -606,13 +633,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="41" y="22" width="1369" height="1031" extended-state="0" />
+    <frame x="41" y="22" width="1369" height="1028" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19226637" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22751322" sideWeight="0.7922912" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27966744" sideWeight="0.7922912" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25472412" sideWeight="0.7922912" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19319429" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -690,109 +717,145 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test-runner.html">
+    <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="4" selection-start="952" selection-end="952" vertical-scroll-proportion="0.3398058" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app-test/specs/RuleFunctionsTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="22" selection-start="621" selection-end="621" vertical-scroll-proportion="0.28965518" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/EdgeRuleFactory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="54" selection-start="558" selection-end="558" vertical-scroll-proportion="-0.032183908" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/common/ComboLookupButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="51" selection-start="3085" selection-end="3085" vertical-scroll-proportion="0.0">
+        <state line="50" column="7" selection-start="1209" selection-end="1209" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1369991333000" expanded="false" signature="2653:2688" placeholder="..." />
+            <element signature="e#1683#7510#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/CompoundGeneOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="56" selection-start="2637" selection-end="3011" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370346622000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseGeneOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="25" selection-start="2629" selection-end="2629" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370347966000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370348001000" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/CompoundProteinOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="58" selection-start="2373" selection-end="2754" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370346622000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseCompoundOperation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="42" selection-start="1425" selection-end="1550" vertical-scroll-proportion="0.0" />
+        <state line="95" column="36" selection-start="3386" selection-end="3386" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370347213000" expanded="true" signature="3094:3112" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/common/ComboLookupButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1369991333000" expanded="false" signature="2653:2688" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneCompoundOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="62" selection-start="2611" selection-end="2611" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370353921000" expanded="false" signature="2259:2277" placeholder="..." />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/operation/InteractionsRuleOperation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="12" selection-start="2559" selection-end="2559" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="19" selection-start="2751" selection-end="2751" vertical-scroll-proportion="-1.4793389">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="49" selection-start="5609" selection-end="5609" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app-test/specs/AjaxConcurrencyTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="12" selection-start="2634" selection-end="2634" vertical-scroll-proportion="0.25977013" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/common/EntityLookup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="13" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/cytoscape/CytoScape.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="99" column="67" selection-start="3153" selection-end="3153" vertical-scroll-proportion="0.79028434">
           <folding>
-            <marker date="1369647581000" expanded="false" signature="4663:4698" placeholder="..." />
+            <marker date="1370355747000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/panels/CytoPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="296" column="41" selection-start="5849" selection-end="5849" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1370005339000" expanded="false" signature="3291:3345" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/Panels.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="28" selection-start="5103" selection-end="5103" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="37" selection-start="2239" selection-end="2239" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/operation/ProteinDiseaseOperation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="29" selection-start="2218" selection-end="2218" vertical-scroll-proportion="0.0">
+        <state line="85" column="89" selection-start="2706" selection-end="2787" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370359005000" expanded="false" signature="2489:2507" placeholder="..." />
+            <marker date="1370359005000" expanded="true" signature="2729:2748" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneDiseaseOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="89" selection-start="2961" selection-end="2961" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370359005000" expanded="true" signature="2669:2687" placeholder="..." />
+            <marker date="1370359005000" expanded="true" signature="2903:2922" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/CytoscapeActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="207" column="0" selection-start="5560" selection-end="5560" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/operation/DiseaseProteinOperation.js">
+    <entry file="file://$PROJECT_DIR$/app/view/panels/CytoPanel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="27" selection-start="1718" selection-end="1718" vertical-scroll-proportion="0.49271846">
+        <state line="307" column="54" selection-start="6075" selection-end="6075" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370359156000" expanded="false" signature="3334:3388" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/RuleFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/ProteinGeneOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="35" selection-start="1802" selection-end="1802" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370356658000" expanded="false" signature="2215:2233" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/operation/GeneProteinOperation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="58" selection-start="2282" selection-end="2282" vertical-scroll-proportion="0.6589525">
+          <folding>
+            <marker date="1370359432000" expanded="true" signature="2257:2275" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

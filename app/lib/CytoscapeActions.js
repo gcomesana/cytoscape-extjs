@@ -128,7 +128,8 @@ Ext.define('HT.lib.CytoscapeActions', {
 				source: nodeOneId.toString(),
 				target: nodeTwoId.toString(),
 
-				label: 'from '+nodeOneId+' to '+nodeTwoId,
+				// label: 'from '+nodeOneId+' to '+nodeTwoId,
+				label: '',
         rule: edgeRule
 			};
 			console.log('Edge AFTER edgeData...');
@@ -190,8 +191,14 @@ Ext.define('HT.lib.CytoscapeActions', {
 			// There are several paths in a graph, with several edges for every path
 			// and one rule for every edges, with several function every rule
 			vis.visualStyleBypass(null); // remove bypass; reset the graph colors
-			Ext.each(paths, function(path, index, pathList) {
+			Ext.each(paths, function(path, indexPath, pathList) {
 				var edgeIndex = 0;
+				var cytoscapePanel = Ext.ComponentQuery.query('cytoscape')[0];
+
+				cytoscapePanel.setLoading(true);
+				Ext.getCmp('actionsBtn').disable();
+				Ext.getCmp('clearBtn').disable();
+
 				Ext.each(path, function(edge, indexBis, edgeList) {
 					var rule = edge.rule;
 					var aliases = rule.ruleAliases;
@@ -200,7 +207,7 @@ Ext.define('HT.lib.CytoscapeActions', {
 						var opObj = HT.lib.RuleFunctions.getOperationFromAlias(aliasObj.alias);
 
 						opObj.clearListeners();
-						// Result is like {result: result, hypothesis: true|false, edge: theedge}
+						// Result is like {result: result, hypothesis: true|false, edge: theedge, msg: aMessage}
 						opObj.on('operationComplete', function (result) {
 							var myEdge = vis.edge(result.edgeId);
 							console.log('operationComplete:'+aliasObj.result+ ' vs '+result.result+' for edge '+myEdge.label);
@@ -210,22 +217,25 @@ Ext.define('HT.lib.CytoscapeActions', {
 							else
 								bypassEdge(myEdge, 'red');
 
-							var labelResult = Ext.getCmp('labelResult');
-							if (labelResult == null)
-								console.log('No component was found');
+							// var labelResult = Ext.getCmp('labelResult');
+							var resultsPanel = Ext.getCmp('resultsPanel');
+							resultsPanel.update(result.msg);
 
-							else if (labelResult === undefined)
-								console.log('A "class" was found...'+labelResult.toString());
+							// Hide the mask...
+							if (indexFunc == functionsList.length-1 &&
+									indexBis == edgeList.length-1 && indexPath == pathList.length-1) {
+								cytoscapePanel.setLoading(false);
 
-							else // labelResult is an object
-								labelResult.setText('result: '+aliasObj.result);
+								Ext.getCmp('actionsBtn').enable();
+								Ext.getCmp('clearBtn').enable();
+							}
 
 						});
 						opObj.operation(rule.edgeSource, rule.edgeTarget, aliasObj.threshold, aliasObj);
 
-						// actualFunc(rule.edgeSource.payloadValue, rule.edgeTarget.payloadValue, aliasObj.threshold, aliasObj)
-					})
+					}) // EO each
 					edgeIndex++;
+
 					/*
 					Ext.each(functionObjs, function(aliasObj, indexFunc, functionsList) {
 						var actualFunc = HT.lib.RuleFunctions.getFunctionFromAlias(aliasObj.alias);

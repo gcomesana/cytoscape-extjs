@@ -1,4 +1,5 @@
 
+
 /**
  * A custom event to fire every time a function in a rule is completed (as all
  * of them will be asynchronous).
@@ -14,7 +15,7 @@
  * /////
  * rfe.fireEvent('operationComplete');
  */
-Ext.define('HT.lib.operation.CompoundGeneOperation', {
+Ext.define('HT.lib.operation.CompoundProteinOperation', {
 	// extend: 'Ext.util.Observable',
 	mixins: {
 		observable: 'Ext.util.Observable'
@@ -24,7 +25,7 @@ Ext.define('HT.lib.operation.CompoundGeneOperation', {
 		// this.initConfig(config);
 
 		this.evName = 'operationComplete';
-		this.alias = 'compound-gene-operation';
+		this.alias = 'compound-protein-operation';
 		this.result = null;
 		this.threshold = null;
 
@@ -65,7 +66,7 @@ Ext.define('HT.lib.operation.CompoundGeneOperation', {
 				var jsonObj = resp;
 				var result = false;
 
-				var activityList = jsonObj.activities; // array of activities involving the compound
+				var activityList = jsonObj.activities; // array of activities involving the protein
 				var activityCount = 0;
 				Ext.each(activityList, function (activity, index, activities) {
 					var activity_accesions = activity.target_accessions.split(',');
@@ -74,16 +75,7 @@ Ext.define('HT.lib.operation.CompoundGeneOperation', {
 						activityCount++;
 						// return false;
 					}
-					/*
-					Ext.each(activity_accesions, function (accs, index, accs_list) {
-						if (payloadTrg.indexOf(accs) != -1) {
-							result = true;
-							return false;
-						}
 
-					});
-					return !result; // if result is false, continue, otherwise break the loop
-					*/
 				});
 
 				funcObj.result = activityCount;
@@ -91,13 +83,12 @@ Ext.define('HT.lib.operation.CompoundGeneOperation', {
 
 				var edgeId = 'e' + edgeSrc.id + '-' + edgeTrg.id;
 				console.log('Operation finished!!!: ' + funcObj.result + ' for ' + edgeId);
-
-				var msg = "<span style=\"font-weight: bold;\">Compound -> Gene</span> operation<br/>('";
+				var msg = "<span style=\"font-weight: bold;\">Compound -> Protein</span> operation<br/>('";
 				msg += edgeSrc.label+"' -> '"+edgeTrg.label;
 				msg += "')<br/>"+activityCount;
-				msg += " activities for the compound where found involving the gene";
+				msg += " activities for the compound where found involving the protein";
 				me.fireEvent('operationComplete', {result: funcObj.result, hypothesis:
-					hypothesiseResult, edgeId: edgeId, msg: msg});
+						hypothesiseResult, edgeId: edgeId, msg: msg});
 			},
 
 			scope: me
